@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,16 @@
 		2BB04CC8268DEF6700C82A4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BB04CC6268DEF6700C82A4F /* LaunchScreen.storyboard */; };
 		2BB04CD3268DEF6700C82A4F /* PersonioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB04CD2268DEF6700C82A4F /* PersonioTests.swift */; };
 		2BB04CDE268DEF6700C82A4F /* PersonioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB04CDD268DEF6700C82A4F /* PersonioUITests.swift */; };
+		2BB04D04268DFD1400C82A4F /* RxCocoa.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB04D00268DFD1400C82A4F /* RxCocoa.xcframework */; };
+		2BB04D05268DFD1400C82A4F /* RxCocoa.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB04D00268DFD1400C82A4F /* RxCocoa.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2BB04D06268DFD1400C82A4F /* RxSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB04D01268DFD1400C82A4F /* RxSwift.xcframework */; };
+		2BB04D07268DFD1400C82A4F /* RxSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB04D01268DFD1400C82A4F /* RxSwift.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2BB04D08268DFD1400C82A4F /* RxRelay.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB04D02268DFD1400C82A4F /* RxRelay.xcframework */; };
+		2BB04D09268DFD1400C82A4F /* RxRelay.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB04D02268DFD1400C82A4F /* RxRelay.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2BB04D0A268DFD1400C82A4F /* RxBlocking.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB04D03268DFD1400C82A4F /* RxBlocking.xcframework */; };
+		2BB04D0B268DFD1400C82A4F /* RxBlocking.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB04D03268DFD1400C82A4F /* RxBlocking.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2BB04D16268E0FAD00C82A4F /* Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB04D15268E0FAD00C82A4F /* Candidate.swift */; };
+		2BB04D1C268E12A900C82A4F /* GenericListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB04D1B268E12A900C82A4F /* GenericListResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +44,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2BB04D0C268DFD1400C82A4F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2BB04D0B268DFD1400C82A4F /* RxBlocking.xcframework in Embed Frameworks */,
+				2BB04D09268DFD1400C82A4F /* RxRelay.xcframework in Embed Frameworks */,
+				2BB04D05268DFD1400C82A4F /* RxCocoa.xcframework in Embed Frameworks */,
+				2BB04D07268DFD1400C82A4F /* RxSwift.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		2BB04CB8268DEF6500C82A4F /* Personio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Personio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BB04CBB268DEF6500C82A4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +76,12 @@
 		2BB04CD9268DEF6700C82A4F /* PersonioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PersonioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BB04CDD268DEF6700C82A4F /* PersonioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonioUITests.swift; sourceTree = "<group>"; };
 		2BB04CDF268DEF6700C82A4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2BB04D00268DFD1400C82A4F /* RxCocoa.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = RxCocoa.xcframework; path = Carthage/Build/RxCocoa.xcframework; sourceTree = "<group>"; };
+		2BB04D01268DFD1400C82A4F /* RxSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = RxSwift.xcframework; path = Carthage/Build/RxSwift.xcframework; sourceTree = "<group>"; };
+		2BB04D02268DFD1400C82A4F /* RxRelay.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = RxRelay.xcframework; path = Carthage/Build/RxRelay.xcframework; sourceTree = "<group>"; };
+		2BB04D03268DFD1400C82A4F /* RxBlocking.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = RxBlocking.xcframework; path = Carthage/Build/RxBlocking.xcframework; sourceTree = "<group>"; };
+		2BB04D15268E0FAD00C82A4F /* Candidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Candidate.swift; sourceTree = "<group>"; };
+		2BB04D1B268E12A900C82A4F /* GenericListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericListResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +89,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BB04D0A268DFD1400C82A4F /* RxBlocking.xcframework in Frameworks */,
+				2BB04D08268DFD1400C82A4F /* RxRelay.xcframework in Frameworks */,
+				2BB04D04268DFD1400C82A4F /* RxCocoa.xcframework in Frameworks */,
+				2BB04D06268DFD1400C82A4F /* RxSwift.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +120,7 @@
 				2BB04CD1268DEF6700C82A4F /* PersonioTests */,
 				2BB04CDC268DEF6700C82A4F /* PersonioUITests */,
 				2BB04CB9268DEF6500C82A4F /* Products */,
+				2BB04CFF268DFD1400C82A4F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +137,8 @@
 		2BB04CBA268DEF6500C82A4F /* Personio */ = {
 			isa = PBXGroup;
 			children = (
+				2BB04D11268E0B0B00C82A4F /* Service layer */,
+				2BB04D14268E0B2500C82A4F /* Model layer */,
 				2BB04CBB268DEF6500C82A4F /* AppDelegate.swift */,
 				2BB04CBD268DEF6500C82A4F /* SceneDelegate.swift */,
 				2BB04CBF268DEF6500C82A4F /* ViewController.swift */,
@@ -128,6 +168,49 @@
 			path = PersonioUITests;
 			sourceTree = "<group>";
 		};
+		2BB04CFF268DFD1400C82A4F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2BB04D03268DFD1400C82A4F /* RxBlocking.xcframework */,
+				2BB04D00268DFD1400C82A4F /* RxCocoa.xcframework */,
+				2BB04D02268DFD1400C82A4F /* RxRelay.xcframework */,
+				2BB04D01268DFD1400C82A4F /* RxSwift.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2BB04D11268E0B0B00C82A4F /* Service layer */ = {
+			isa = PBXGroup;
+			children = (
+				2BB04D13268E0B1A00C82A4F /* Local layer */,
+				2BB04D12268E0B1200C82A4F /* Remote layer */,
+			);
+			path = "Service layer";
+			sourceTree = "<group>";
+		};
+		2BB04D12268E0B1200C82A4F /* Remote layer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Remote layer";
+			sourceTree = "<group>";
+		};
+		2BB04D13268E0B1A00C82A4F /* Local layer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Local layer";
+			sourceTree = "<group>";
+		};
+		2BB04D14268E0B2500C82A4F /* Model layer */ = {
+			isa = PBXGroup;
+			children = (
+				2BB04D15268E0FAD00C82A4F /* Candidate.swift */,
+				2BB04D1B268E12A900C82A4F /* GenericListResponse.swift */,
+			);
+			path = "Model layer";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,12 +221,15 @@
 				2BB04CB4268DEF6500C82A4F /* Sources */,
 				2BB04CB5268DEF6500C82A4F /* Frameworks */,
 				2BB04CB6268DEF6500C82A4F /* Resources */,
+				2BB04D0C268DFD1400C82A4F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Personio;
+			packageProductDependencies = (
+			);
 			productName = Personio;
 			productReference = 2BB04CB8268DEF6500C82A4F /* Personio.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +301,8 @@
 				Base,
 			);
 			mainGroup = 2BB04CAF268DEF6500C82A4F;
+			packageReferences = (
+			);
 			productRefGroup = 2BB04CB9268DEF6500C82A4F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -258,9 +346,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BB04D1C268E12A900C82A4F /* GenericListResponse.swift in Sources */,
 				2BB04CC0268DEF6500C82A4F /* ViewController.swift in Sources */,
 				2BB04CBC268DEF6500C82A4F /* AppDelegate.swift in Sources */,
 				2BB04CBE268DEF6500C82A4F /* SceneDelegate.swift in Sources */,
+				2BB04D16268E0FAD00C82A4F /* Candidate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

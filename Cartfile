@@ -1,0 +1,3 @@
+github "ReactiveX/RxSwift" "6.2.0"
+github "RxSwiftCommunity/RxAlamofire" ~> 6.1
+github "RxSwiftCommunity/RxRealm"
