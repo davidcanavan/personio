@@ -7,7 +7,6 @@
 
 import Foundation
 import RxSwift
-import RxAlamofire
 
 /// Holder data structure for URL constants
 public enum PersonioRemoteServiceSupportedURLs {
@@ -21,14 +20,25 @@ public protocol PersonioRemoteService {
 }
 
 /// Default implementation of the personio service, as opposed to mocks used for testing
-//public class DefaultPersonioRemoteService: PersonioRemoteService {
-//
-//    /// Returns the list of candidates from the candidate endpoint
-//    /// - Returns: The candidate list
-//    public func getCandidateList() -> Observable<[Candidate]> {
-//        RxAlamofire.json(.get, PersonioRemoteServiceSupportedURLs.candidates)
-//    }
-//
-//
-//}
+public class LivePersonioRemoteService: PersonioRemoteService {
+
+    /// The network service we'll use to make remote calls
+    internal let remoteNetworkService: RemoteNetworkService
+    
+    /// Creates a new `LivePersonioRemoteService`
+    /// - Parameter remoteService: The unuderlying network service we'll use to make remote calls
+    public init(with remoteService: RemoteNetworkService) {
+        self.remoteNetworkService = remoteService
+    }
+    
+    /// Returns the list of candidates from the candidate endpoint
+    /// - Returns: The candidate list
+    public func getCandidateList() -> Observable<[Candidate]> {
+        return self.remoteNetworkService
+            .request(.get, PersonioRemoteServiceSupportedURLs.candidates)
+            .map { (value: GenericListResponse<Candidate>) -> [Candidate] in
+                return value.data
+            }
+    }
+}
 

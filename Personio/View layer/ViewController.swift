@@ -7,7 +7,7 @@
 
 import UIKit
 import RxSwift
-import RxAlamofire
+import Alamofire
 
 class ViewController: UIViewController {
     
@@ -25,28 +25,24 @@ class ViewController: UIViewController {
         tableView.delegate = self
         tableView.tableFooterView = UIView()
         
-//
-//        Observable.of(["Helo", "Goodby"])
-//            .bind(to: tableView.rx.items).disposed(by: disposeBag)
         return tableView
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Urgh"
+        self.title = "Candidates"
         
-        let candidatesObservable: Observable<[Candidate]> = MockPersonioRemoteService().getCandidateList()
-        candidatesObservable.subscribe(onNext: { [weak self] (candidates) in
-            self?.candidates = candidates
-            self?.tableView.reloadData()
-        }).disposed(by: self.disposeBag)
-        
-//        RxAlamofire.json(.get, PersonioRemoteServiceSupportedURLs.candidates)
-//            .observe(on: MainScheduler.instance)
-//            .subscribe { print($0) }
-//            .disposed(by: disposeBag)
-        
-        
+        PersonioServiceFactory.personioRemoteService
+            .getCandidateList().subscribe { [weak self] (candidates: [Candidate]) in
+                self?.candidates = candidates
+                self?.tableView.reloadData()
+            } onError: { (error) in
+                print(error)
+            } onCompleted: {
+                print("Completed")
+            } onDisposed: {
+                print("Disposed")
+            }.disposed(by: self.disposeBag)
         
     }
     
@@ -57,41 +53,6 @@ class ViewController: UIViewController {
         self.tableView.fillToSuperviewMargins()
     }
     
-    @IBAction func didPressActionButton(_ sender: Any) {
-        
-        let url = URL(string: PersonioRemoteServiceSupportedURLs.candidates)!
-        URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-            
-            // Check for any unexpected error
-            if let error = error {
-                print(error)
-                return
-            }
-            
-            // Check that we've gotten some data and a http response
-            guard let data = data,
-                  let response = response as? HTTPURLResponse else {
-                return
-            }
-            
-            // So this can return weird data
-            if 200..<300 ~= response.statusCode {
-                let decoder = JSONDecoder()
-                
-                if let serverError = try? decoder.decode(GenericServerErrorResponse.self, from: data) {
-                    print(serverError)
-                } else if let candidates = try? decoder.decode(GenericListResponse<Candidate>.self, from: data) {
-                    print(candidates)
-                }
-                
-                
-            } else {
-                print(response.statusCode)
-            }
-        }).resume()
-    }
-    
-
 }
 
 extension ViewController: UITableViewDataSource {

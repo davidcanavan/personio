@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Server model class to handle json response arrays
 public class GenericListResponse<T: Codable>: Codable {
     public var data: [T]
 }
