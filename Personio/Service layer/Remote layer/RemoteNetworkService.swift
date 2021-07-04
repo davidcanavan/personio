@@ -22,6 +22,10 @@ public protocol RemoteNetworkService {
 /// Default implementation for the generic service that handles remote network calls
 public class LiveRemoteNetworkService: RemoteNetworkService {
     
+    /// Generic function that calls an endpoint and converts the results from json to the typed model object
+    /// - Parameters:
+    ///   - method: The HTTP method to use
+    ///   - urlString: The string URL of the resource
     public func request<T: Codable>(_ method: HTTPMethod, _ urlString: String) -> Observable<T> {
         
         return Observable.create { (observer) -> Disposable in

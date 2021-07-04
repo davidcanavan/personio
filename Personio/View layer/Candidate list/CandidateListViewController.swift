@@ -11,43 +11,48 @@ import Alamofire
 
 class CandidateListViewController: UIViewController {
     
-    internal var candidates: [Candidate]?
+    // MARK: - Vars
     
+    /// The view model for this view
+    internal var viewModel: CandidateListViewModel!
+    
+    internal var candidates: [Candidate]?
+    /// Bag for disposed subuscriptions
     internal let disposeBag = DisposeBag()
     
-    lazy var tableView: UITableView = { [unowned self] in
+    // MARK: - User interface
+    
+    lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         GeneralCell.register(to: tableView)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 60
+        tableView.tableFooterView = UIView()
+        
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.tableFooterView = UIView()
         
         return tableView
     }()
+    
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Candidates"
         
-        PersonioServiceFactory.personioRemoteService
-            .getCandidateList().subscribe { [weak self] (candidates: [Candidate]) in
-                self?.candidates = candidates
-                self?.tableView.reloadData()
-            } onError: { (error) in
-                print(error)
-            } onCompleted: {
-                print("Completed")
-            } onDisposed: {
-                print("Disposed")
-            }.disposed(by: self.disposeBag)
+        self.viewModel.loadData()
         
+        self.viewModel.candidates.bind { [weak self] (candidates) in
+            self?.candidates = candidates
+            self?.tableView.reloadData()
+        }.disposed(by: disposeBag)
     }
     
     override func loadView() {
         super.loadView()
+        self.view.backgroundColor = .white
         
         self.view.addSubview(self.tableView)
         self.tableView.fillToSuperviewMargins()

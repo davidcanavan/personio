@@ -15,8 +15,7 @@
 		2B718345268F0A1400AEBBF6 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B718344268F0A1400AEBBF6 /* UIView+.swift */; };
 		2BB04CBC268DEF6500C82A4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB04CBB268DEF6500C82A4F /* AppDelegate.swift */; };
 		2BB04CBE268DEF6500C82A4F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB04CBD268DEF6500C82A4F /* SceneDelegate.swift */; };
-		2BB04CC0268DEF6500C82A4F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB04CBF268DEF6500C82A4F /* ViewController.swift */; };
-		2BB04CC3268DEF6500C82A4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BB04CC1268DEF6500C82A4F /* Main.storyboard */; };
+		2BB04CC0268DEF6500C82A4F /* CandidateListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB04CBF268DEF6500C82A4F /* CandidateListViewController.swift */; };
 		2BB04CC5268DEF6700C82A4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BB04CC4268DEF6700C82A4F /* Assets.xcassets */; };
 		2BB04CC8268DEF6700C82A4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BB04CC6268DEF6700C82A4F /* LaunchScreen.storyboard */; };
 		2BB04CD3268DEF6700C82A4F /* PersonioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB04CD2268DEF6700C82A4F /* PersonioTests.swift */; };
@@ -38,6 +37,8 @@
 		2BB04D50268E601500C82A4F /* GenericServerErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB04D4F268E601500C82A4F /* GenericServerErrorResponse.swift */; };
 		2BFBDEE1268E6A0100C3D1C9 /* MockPersonioRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFBDEE0268E6A0100C3D1C9 /* MockPersonioRemoteService.swift */; };
 		2BFBDEE8268E6A2300C3D1C9 /* candidates.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BFBDEE7268E6A2300C3D1C9 /* candidates.json */; };
+		2BFE1ED9269256FE009F3804 /* CandidateListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFE1ED8269256FE009F3804 /* CandidateListViewModel.swift */; };
+		2BFE1EE426926247009F3804 /* LoadingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFE1EE326926247009F3804 /* LoadingStatus.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,8 +86,7 @@
 		2BB04CB8268DEF6500C82A4F /* Personio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Personio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BB04CBB268DEF6500C82A4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BB04CBD268DEF6500C82A4F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2BB04CBF268DEF6500C82A4F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2BB04CC2268DEF6500C82A4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2BB04CBF268DEF6500C82A4F /* CandidateListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateListViewController.swift; sourceTree = "<group>"; };
 		2BB04CC4268DEF6700C82A4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2BB04CC7268DEF6700C82A4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2BB04CC9268DEF6700C82A4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -112,6 +112,8 @@
 		2BB04D4F268E601500C82A4F /* GenericServerErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericServerErrorResponse.swift; sourceTree = "<group>"; };
 		2BFBDEE0268E6A0100C3D1C9 /* MockPersonioRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPersonioRemoteService.swift; sourceTree = "<group>"; };
 		2BFBDEE7268E6A2300C3D1C9 /* candidates.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = candidates.json; sourceTree = "<group>"; };
+		2BFE1ED8269256FE009F3804 /* CandidateListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateListViewModel.swift; sourceTree = "<group>"; };
+		2BFE1EE326926247009F3804 /* LoadingStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingStatus.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,7 +158,8 @@
 		2B68FC8F268EEED300B3F7F5 /* View layer */ = {
 			isa = PBXGroup;
 			children = (
-				2BB04CBF268DEF6500C82A4F /* ViewController.swift */,
+				2BFE1EE22692623B009F3804 /* General */,
+				2BFE1ED5269256F0009F3804 /* Candidate list */,
 				2B68FC90268EEF9B00B3F7F5 /* GeneralCell.swift */,
 				2B718344268F0A1400AEBBF6 /* UIView+.swift */,
 			);
@@ -192,7 +195,6 @@
 				2B68FC8F268EEED300B3F7F5 /* View layer */,
 				2BB04CBB268DEF6500C82A4F /* AppDelegate.swift */,
 				2BB04CBD268DEF6500C82A4F /* SceneDelegate.swift */,
-				2BB04CC1268DEF6500C82A4F /* Main.storyboard */,
 				2BB04CC4268DEF6700C82A4F /* Assets.xcassets */,
 				2BB04CC6268DEF6700C82A4F /* LaunchScreen.storyboard */,
 				2BB04CC9268DEF6700C82A4F /* Info.plist */,
@@ -288,6 +290,23 @@
 				2BFBDEE7268E6A2300C3D1C9 /* candidates.json */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		2BFE1ED5269256F0009F3804 /* Candidate list */ = {
+			isa = PBXGroup;
+			children = (
+				2BB04CBF268DEF6500C82A4F /* CandidateListViewController.swift */,
+				2BFE1ED8269256FE009F3804 /* CandidateListViewModel.swift */,
+			);
+			path = "Candidate list";
+			sourceTree = "<group>";
+		};
+		2BFE1EE22692623B009F3804 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				2BFE1EE326926247009F3804 /* LoadingStatus.swift */,
+			);
+			path = General;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -400,7 +419,6 @@
 			files = (
 				2BB04CC8268DEF6700C82A4F /* LaunchScreen.storyboard in Resources */,
 				2BB04CC5268DEF6700C82A4F /* Assets.xcassets in Resources */,
-				2BB04CC3268DEF6500C82A4F /* Main.storyboard in Resources */,
 				2BFBDEE8268E6A2300C3D1C9 /* candidates.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,9 +451,11 @@
 				2B4D95C726923C5A00DBC519 /* PersonioServiceFactory.swift in Sources */,
 				2BB04D35268E1FCA00C82A4F /* PersonioRemoteService.swift in Sources */,
 				2BB04D1C268E12A900C82A4F /* GenericListResponse.swift in Sources */,
+				2BFE1EE426926247009F3804 /* LoadingStatus.swift in Sources */,
 				2BFBDEE1268E6A0100C3D1C9 /* MockPersonioRemoteService.swift in Sources */,
-				2BB04CC0268DEF6500C82A4F /* ViewController.swift in Sources */,
+				2BB04CC0268DEF6500C82A4F /* CandidateListViewController.swift in Sources */,
 				2BB04CBC268DEF6500C82A4F /* AppDelegate.swift in Sources */,
+				2BFE1ED9269256FE009F3804 /* CandidateListViewModel.swift in Sources */,
 				2B4D95C32691E52D00DBC519 /* RemoteNetworkService.swift in Sources */,
 				2BB04CBE268DEF6500C82A4F /* SceneDelegate.swift in Sources */,
 				2B718345268F0A1400AEBBF6 /* UIView+.swift in Sources */,
@@ -476,14 +496,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		2BB04CC1268DEF6500C82A4F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2BB04CC2268DEF6500C82A4F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		2BB04CC6268DEF6700C82A4F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
