@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B4D95B92691DA0600DBC519 /* candidates_case_success.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B4D95B82691DA0600DBC519 /* candidates_case_success.json */; };
+		2B4D95BF2691DA3F00DBC519 /* candidates_case_parsing_error.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B4D95BE2691DA3F00DBC519 /* candidates_case_parsing_error.json */; };
+		2B68FC91268EEF9B00B3F7F5 /* GeneralCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B68FC90268EEF9B00B3F7F5 /* GeneralCell.swift */; };
+		2B718345268F0A1400AEBBF6 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B718344268F0A1400AEBBF6 /* UIView+.swift */; };
 		2BB04CBC268DEF6500C82A4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB04CBB268DEF6500C82A4F /* AppDelegate.swift */; };
 		2BB04CBE268DEF6500C82A4F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB04CBD268DEF6500C82A4F /* SceneDelegate.swift */; };
 		2BB04CC0268DEF6500C82A4F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB04CBF268DEF6500C82A4F /* ViewController.swift */; };
@@ -25,6 +29,21 @@
 		2BB04D0B268DFD1400C82A4F /* RxBlocking.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB04D03268DFD1400C82A4F /* RxBlocking.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2BB04D16268E0FAD00C82A4F /* Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB04D15268E0FAD00C82A4F /* Candidate.swift */; };
 		2BB04D1C268E12A900C82A4F /* GenericListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB04D1B268E12A900C82A4F /* GenericListResponse.swift */; };
+		2BB04D25268E1A8400C82A4F /* RealmSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB04D20268E1A8400C82A4F /* RealmSwift.xcframework */; };
+		2BB04D26268E1A8400C82A4F /* RealmSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB04D20268E1A8400C82A4F /* RealmSwift.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2BB04D27268E1A8400C82A4F /* RxAlamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB04D21268E1A8400C82A4F /* RxAlamofire.xcframework */; };
+		2BB04D28268E1A8400C82A4F /* RxAlamofire.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB04D21268E1A8400C82A4F /* RxAlamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2BB04D29268E1A8400C82A4F /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB04D22268E1A8400C82A4F /* Alamofire.xcframework */; };
+		2BB04D2A268E1A8400C82A4F /* Alamofire.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB04D22268E1A8400C82A4F /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2BB04D2E268E1A9600C82A4F /* RxRealm.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB04D2D268E1A9600C82A4F /* RxRealm.xcframework */; };
+		2BB04D2F268E1A9600C82A4F /* RxRealm.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB04D2D268E1A9600C82A4F /* RxRealm.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2BB04D35268E1FCA00C82A4F /* PersonioRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB04D34268E1FCA00C82A4F /* PersonioRemoteService.swift */; };
+		2BB04D3C268E478300C82A4F /* Realm.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB04D1F268E1A8400C82A4F /* Realm.xcframework */; };
+		2BB04D3D268E478300C82A4F /* Realm.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB04D1F268E1A8400C82A4F /* Realm.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2BB04D49268E5E3400C82A4F /* ServerErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB04D48268E5E3400C82A4F /* ServerErrorResponse.swift */; };
+		2BB04D50268E601500C82A4F /* GenericServerErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB04D4F268E601500C82A4F /* GenericServerErrorResponse.swift */; };
+		2BFBDEE1268E6A0100C3D1C9 /* MockPersonioRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFBDEE0268E6A0100C3D1C9 /* MockPersonioRemoteService.swift */; };
+		2BFBDEE8268E6A2300C3D1C9 /* candidates.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BFBDEE7268E6A2300C3D1C9 /* candidates.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +71,12 @@
 			dstSubfolderSpec = 10;
 			files = (
 				2BB04D0B268DFD1400C82A4F /* RxBlocking.xcframework in Embed Frameworks */,
+				2BB04D26268E1A8400C82A4F /* RealmSwift.xcframework in Embed Frameworks */,
+				2BB04D28268E1A8400C82A4F /* RxAlamofire.xcframework in Embed Frameworks */,
 				2BB04D09268DFD1400C82A4F /* RxRelay.xcframework in Embed Frameworks */,
+				2BB04D2F268E1A9600C82A4F /* RxRealm.xcframework in Embed Frameworks */,
+				2BB04D3D268E478300C82A4F /* Realm.xcframework in Embed Frameworks */,
+				2BB04D2A268E1A8400C82A4F /* Alamofire.xcframework in Embed Frameworks */,
 				2BB04D05268DFD1400C82A4F /* RxCocoa.xcframework in Embed Frameworks */,
 				2BB04D07268DFD1400C82A4F /* RxSwift.xcframework in Embed Frameworks */,
 			);
@@ -62,6 +86,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2B4D95B82691DA0600DBC519 /* candidates_case_success.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = candidates_case_success.json; sourceTree = "<group>"; };
+		2B4D95BE2691DA3F00DBC519 /* candidates_case_parsing_error.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = candidates_case_parsing_error.json; sourceTree = "<group>"; };
+		2B68FC90268EEF9B00B3F7F5 /* GeneralCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCell.swift; sourceTree = "<group>"; };
+		2B718344268F0A1400AEBBF6 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		2BB04CB8268DEF6500C82A4F /* Personio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Personio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BB04CBB268DEF6500C82A4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BB04CBD268DEF6500C82A4F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +110,16 @@
 		2BB04D03268DFD1400C82A4F /* RxBlocking.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = RxBlocking.xcframework; path = Carthage/Build/RxBlocking.xcframework; sourceTree = "<group>"; };
 		2BB04D15268E0FAD00C82A4F /* Candidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Candidate.swift; sourceTree = "<group>"; };
 		2BB04D1B268E12A900C82A4F /* GenericListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericListResponse.swift; sourceTree = "<group>"; };
+		2BB04D1F268E1A8400C82A4F /* Realm.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Realm.xcframework; path = Carthage/Build/Realm.xcframework; sourceTree = "<group>"; };
+		2BB04D20268E1A8400C82A4F /* RealmSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = RealmSwift.xcframework; path = Carthage/Build/RealmSwift.xcframework; sourceTree = "<group>"; };
+		2BB04D21268E1A8400C82A4F /* RxAlamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = RxAlamofire.xcframework; path = Carthage/Build/RxAlamofire.xcframework; sourceTree = "<group>"; };
+		2BB04D22268E1A8400C82A4F /* Alamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Alamofire.xcframework; path = Carthage/Build/Alamofire.xcframework; sourceTree = "<group>"; };
+		2BB04D2D268E1A9600C82A4F /* RxRealm.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = RxRealm.xcframework; path = Carthage/Build/RxRealm.xcframework; sourceTree = "<group>"; };
+		2BB04D34268E1FCA00C82A4F /* PersonioRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonioRemoteService.swift; sourceTree = "<group>"; };
+		2BB04D48268E5E3400C82A4F /* ServerErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerErrorResponse.swift; sourceTree = "<group>"; };
+		2BB04D4F268E601500C82A4F /* GenericServerErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericServerErrorResponse.swift; sourceTree = "<group>"; };
+		2BFBDEE0268E6A0100C3D1C9 /* MockPersonioRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPersonioRemoteService.swift; sourceTree = "<group>"; };
+		2BFBDEE7268E6A2300C3D1C9 /* candidates.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = candidates.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +128,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BB04D0A268DFD1400C82A4F /* RxBlocking.xcframework in Frameworks */,
+				2BB04D25268E1A8400C82A4F /* RealmSwift.xcframework in Frameworks */,
+				2BB04D27268E1A8400C82A4F /* RxAlamofire.xcframework in Frameworks */,
 				2BB04D08268DFD1400C82A4F /* RxRelay.xcframework in Frameworks */,
+				2BB04D2E268E1A9600C82A4F /* RxRealm.xcframework in Frameworks */,
+				2BB04D3C268E478300C82A4F /* Realm.xcframework in Frameworks */,
+				2BB04D29268E1A8400C82A4F /* Alamofire.xcframework in Frameworks */,
 				2BB04D04268DFD1400C82A4F /* RxCocoa.xcframework in Frameworks */,
 				2BB04D06268DFD1400C82A4F /* RxSwift.xcframework in Frameworks */,
 			);
@@ -113,6 +156,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B4D95B72691D9D400DBC519 /* Candidates json */ = {
+			isa = PBXGroup;
+			children = (
+				2B4D95B82691DA0600DBC519 /* candidates_case_success.json */,
+				2B4D95BE2691DA3F00DBC519 /* candidates_case_parsing_error.json */,
+			);
+			path = "Candidates json";
+			sourceTree = "<group>";
+		};
+		2B68FC8F268EEED300B3F7F5 /* View layer */ = {
+			isa = PBXGroup;
+			children = (
+				2BB04CBF268DEF6500C82A4F /* ViewController.swift */,
+				2B68FC90268EEF9B00B3F7F5 /* GeneralCell.swift */,
+				2B718344268F0A1400AEBBF6 /* UIView+.swift */,
+			);
+			path = "View layer";
+			sourceTree = "<group>";
+		};
 		2BB04CAF268DEF6500C82A4F = {
 			isa = PBXGroup;
 			children = (
@@ -139,9 +201,9 @@
 			children = (
 				2BB04D11268E0B0B00C82A4F /* Service layer */,
 				2BB04D14268E0B2500C82A4F /* Model layer */,
+				2B68FC8F268EEED300B3F7F5 /* View layer */,
 				2BB04CBB268DEF6500C82A4F /* AppDelegate.swift */,
 				2BB04CBD268DEF6500C82A4F /* SceneDelegate.swift */,
-				2BB04CBF268DEF6500C82A4F /* ViewController.swift */,
 				2BB04CC1268DEF6500C82A4F /* Main.storyboard */,
 				2BB04CC4268DEF6700C82A4F /* Assets.xcassets */,
 				2BB04CC6268DEF6700C82A4F /* LaunchScreen.storyboard */,
@@ -153,6 +215,7 @@
 		2BB04CD1268DEF6700C82A4F /* PersonioTests */ = {
 			isa = PBXGroup;
 			children = (
+				2B4D95B72691D9D400DBC519 /* Candidates json */,
 				2BB04CD2268DEF6700C82A4F /* PersonioTests.swift */,
 				2BB04CD4268DEF6700C82A4F /* Info.plist */,
 			);
@@ -171,6 +234,11 @@
 		2BB04CFF268DFD1400C82A4F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2BB04D2D268E1A9600C82A4F /* RxRealm.xcframework */,
+				2BB04D22268E1A8400C82A4F /* Alamofire.xcframework */,
+				2BB04D1F268E1A8400C82A4F /* Realm.xcframework */,
+				2BB04D20268E1A8400C82A4F /* RealmSwift.xcframework */,
+				2BB04D21268E1A8400C82A4F /* RxAlamofire.xcframework */,
 				2BB04D03268DFD1400C82A4F /* RxBlocking.xcframework */,
 				2BB04D00268DFD1400C82A4F /* RxCocoa.xcframework */,
 				2BB04D02268DFD1400C82A4F /* RxRelay.xcframework */,
@@ -191,6 +259,9 @@
 		2BB04D12268E0B1200C82A4F /* Remote layer */ = {
 			isa = PBXGroup;
 			children = (
+				2BFBDEDF268E69F000C3D1C9 /* Mocks */,
+				2BB04D4E268E5FFE00C82A4F /* Server model */,
+				2BB04D34268E1FCA00C82A4F /* PersonioRemoteService.swift */,
 			);
 			path = "Remote layer";
 			sourceTree = "<group>";
@@ -206,9 +277,27 @@
 			isa = PBXGroup;
 			children = (
 				2BB04D15268E0FAD00C82A4F /* Candidate.swift */,
-				2BB04D1B268E12A900C82A4F /* GenericListResponse.swift */,
 			);
 			path = "Model layer";
+			sourceTree = "<group>";
+		};
+		2BB04D4E268E5FFE00C82A4F /* Server model */ = {
+			isa = PBXGroup;
+			children = (
+				2BB04D1B268E12A900C82A4F /* GenericListResponse.swift */,
+				2BB04D4F268E601500C82A4F /* GenericServerErrorResponse.swift */,
+				2BB04D48268E5E3400C82A4F /* ServerErrorResponse.swift */,
+			);
+			path = "Server model";
+			sourceTree = "<group>";
+		};
+		2BFBDEDF268E69F000C3D1C9 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				2BFBDEE0268E6A0100C3D1C9 /* MockPersonioRemoteService.swift */,
+				2BFBDEE7268E6A2300C3D1C9 /* candidates.json */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,6 +411,7 @@
 				2BB04CC8268DEF6700C82A4F /* LaunchScreen.storyboard in Resources */,
 				2BB04CC5268DEF6700C82A4F /* Assets.xcassets in Resources */,
 				2BB04CC3268DEF6500C82A4F /* Main.storyboard in Resources */,
+				2BFBDEE8268E6A2300C3D1C9 /* candidates.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +419,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B4D95B92691DA0600DBC519 /* candidates_case_success.json in Resources */,
+				2B4D95BF2691DA3F00DBC519 /* candidates_case_parsing_error.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,10 +438,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B68FC91268EEF9B00B3F7F5 /* GeneralCell.swift in Sources */,
+				2BB04D50268E601500C82A4F /* GenericServerErrorResponse.swift in Sources */,
+				2BB04D35268E1FCA00C82A4F /* PersonioRemoteService.swift in Sources */,
 				2BB04D1C268E12A900C82A4F /* GenericListResponse.swift in Sources */,
+				2BFBDEE1268E6A0100C3D1C9 /* MockPersonioRemoteService.swift in Sources */,
 				2BB04CC0268DEF6500C82A4F /* ViewController.swift in Sources */,
 				2BB04CBC268DEF6500C82A4F /* AppDelegate.swift in Sources */,
 				2BB04CBE268DEF6500C82A4F /* SceneDelegate.swift in Sources */,
+				2B718345268F0A1400AEBBF6 /* UIView+.swift in Sources */,
+				2BB04D49268E5E3400C82A4F /* ServerErrorResponse.swift in Sources */,
 				2BB04D16268E0FAD00C82A4F /* Candidate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,7 +13,7 @@ public class Candidate: Codable {
     public var name: String
     public var email: String
     public var birthDate: String
-    public var yearsOfExperience: String
+    public var yearsOfExperience: Int
     public var positionApplied: String
     public var applicationDate: String
     public var status: String
@@ -27,6 +27,21 @@ public class Candidate: Codable {
         case positionApplied = "position_applied"
         case applicationDate = "application_date" // Note: weird format "2018-07-02"
         case status
+    }
+    
+}
+
+extension Candidate: Equatable {
+    
+    public static func == (lhs: Candidate, rhs: Candidate) -> Bool {
+        return lhs.id == rhs.id &&
+            lhs.name == rhs.name &&
+            lhs.email == rhs.email &&
+            lhs.birthDate == rhs.birthDate &&
+            lhs.yearsOfExperience == rhs.yearsOfExperience &&
+            lhs.positionApplied == rhs.positionApplied &&
+            lhs.applicationDate == rhs.applicationDate &&
+            lhs.status == rhs.status
     }
     
 }
