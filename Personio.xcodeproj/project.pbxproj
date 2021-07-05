@@ -43,6 +43,9 @@
 		2BFE1F0F26933C35009F3804 /* LoadingManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFE1F0E26933C35009F3804 /* LoadingManagerView.swift */; };
 		2BFE1F1A26933EAB009F3804 /* LoadingManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFE1F1926933EAB009F3804 /* LoadingManagerViewModel.swift */; };
 		2BFE1F1E26935038009F3804 /* MockServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFE1F1D26935038009F3804 /* MockServerResponse.swift */; };
+		2BFE1F2F2693A3F0009F3804 /* CandidateDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFE1F2E2693A3F0009F3804 /* CandidateDetailViewModel.swift */; };
+		2BFE1F352693A42F009F3804 /* CandidateDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFE1F342693A42F009F3804 /* CandidateDetailViewController.swift */; };
+		2BFE1F3C2693B4A1009F3804 /* GeneralCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFE1F3B2693B4A1009F3804 /* GeneralCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +125,9 @@
 		2BFE1F0E26933C35009F3804 /* LoadingManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingManagerView.swift; sourceTree = "<group>"; };
 		2BFE1F1926933EAB009F3804 /* LoadingManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingManagerViewModel.swift; sourceTree = "<group>"; };
 		2BFE1F1D26935038009F3804 /* MockServerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockServerResponse.swift; sourceTree = "<group>"; };
+		2BFE1F2E2693A3F0009F3804 /* CandidateDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateDetailViewModel.swift; sourceTree = "<group>"; };
+		2BFE1F342693A42F009F3804 /* CandidateDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateDetailViewController.swift; sourceTree = "<group>"; };
+		2BFE1F3B2693B4A1009F3804 /* GeneralCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,7 +174,7 @@
 				2BFE1EE22692623B009F3804 /* General */,
 				2BFE1EED26927C6C009F3804 /* Loading views */,
 				2BFE1ED5269256F0009F3804 /* Candidate list */,
-				2B68FC90268EEF9B00B3F7F5 /* GeneralCell.swift */,
+				2BFE1F2D2693A3C3009F3804 /* Candidate detail */,
 				2B718344268F0A1400AEBBF6 /* UIView+.swift */,
 			);
 			path = "View layer";
@@ -306,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				2BFE1EE326926247009F3804 /* LoadingStatus.swift */,
+				2BFE1F3A2693B494009F3804 /* General cell */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -327,6 +334,24 @@
 				2BFE1F1926933EAB009F3804 /* LoadingManagerViewModel.swift */,
 			);
 			path = "Loading manager view";
+			sourceTree = "<group>";
+		};
+		2BFE1F2D2693A3C3009F3804 /* Candidate detail */ = {
+			isa = PBXGroup;
+			children = (
+				2BFE1F342693A42F009F3804 /* CandidateDetailViewController.swift */,
+				2BFE1F2E2693A3F0009F3804 /* CandidateDetailViewModel.swift */,
+			);
+			path = "Candidate detail";
+			sourceTree = "<group>";
+		};
+		2BFE1F3A2693B494009F3804 /* General cell */ = {
+			isa = PBXGroup;
+			children = (
+				2B68FC90268EEF9B00B3F7F5 /* GeneralCell.swift */,
+				2BFE1F3B2693B4A1009F3804 /* GeneralCellViewModel.swift */,
+			);
+			path = "General cell";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -471,6 +496,7 @@
 				2BFE1F1A26933EAB009F3804 /* LoadingManagerViewModel.swift in Sources */,
 				2BB04D35268E1FCA00C82A4F /* PersonioRemoteService.swift in Sources */,
 				2BB04D1C268E12A900C82A4F /* GenericListResponse.swift in Sources */,
+				2BFE1F3C2693B4A1009F3804 /* GeneralCellViewModel.swift in Sources */,
 				2BFE1F1E26935038009F3804 /* MockServerResponse.swift in Sources */,
 				2BFE1EEA26927A1C009F3804 /* LoadingView.swift in Sources */,
 				2BFE1EE426926247009F3804 /* LoadingStatus.swift in Sources */,
@@ -483,8 +509,10 @@
 				2B4D95C32691E52D00DBC519 /* RemoteNetworkService.swift in Sources */,
 				2BB04CBE268DEF6500C82A4F /* SceneDelegate.swift in Sources */,
 				2B718345268F0A1400AEBBF6 /* UIView+.swift in Sources */,
+				2BFE1F352693A42F009F3804 /* CandidateDetailViewController.swift in Sources */,
 				2BB04D49268E5E3400C82A4F /* ServerErrorResponse.swift in Sources */,
 				2BB04D16268E0FAD00C82A4F /* Candidate.swift in Sources */,
+				2BFE1F2F2693A3F0009F3804 /* CandidateDetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

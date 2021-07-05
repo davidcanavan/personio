@@ -7,16 +7,17 @@
 
 import UIKit
 import RxSwift
-import Alamofire
 
 class CandidateListViewController: UIViewController {
     
-    // MARK: - Vars
+    // MARK: - Instance vars
     
     /// The view model for this view
     internal var viewModel: CandidateListViewModel!
     
-    internal var candidates: [Candidate]?
+    /// Candidate view models for this view
+    internal var candidateViewModels: [GeneralCellViewModel]?
+    
     /// Bag for disposed subuscriptions
     internal let disposeBag = DisposeBag()
     
@@ -33,8 +34,8 @@ class CandidateListViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        self.viewModel.candidates.bind { [weak self] (candidates) in
-            self?.candidates = candidates
+        self.viewModel.candidateViewModels.bind { [weak self] (candidateViewModels) in
+            self?.candidateViewModels = candidateViewModels
             self?.tableView.reloadData()
         }.disposed(by: disposeBag)
         
@@ -51,6 +52,8 @@ class CandidateListViewController: UIViewController {
             loadedView: self.tableView
         )
         loadingManagerView.translatesAutoresizingMaskIntoConstraints = false
+        loadingManagerView.preservesSuperviewLayoutMargins = true
+        loadingManagerView.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         return loadingManagerView
     }()
     
@@ -75,24 +78,23 @@ class CandidateListViewController: UIViewController {
 extension CandidateListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.candidates?.count ?? 0
+        return self.candidateViewModels?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = GeneralCell.deque(from: tableView, for: indexPath)
-        guard let candidate = self.candidates?[indexPath.row] else { return cell }
-        cell.titleLabel.text = candidate.name
-        cell.subtitleLabel.text = candidate.positionApplied
+        guard let candidateViewModel = self.candidateViewModels?[indexPath.row] else {
+            return cell
+        }
+        cell.viewModel = candidateViewModel
         return cell
     }
-    
     
 }
 
 extension CandidateListViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        self.viewModel.openCandidateDetail(at: indexPath.row, in: self)
     }
-
 }

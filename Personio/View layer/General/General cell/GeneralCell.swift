@@ -9,6 +9,16 @@ import UIKit
 
 public class GeneralCell: UITableViewCell {
     
+    // MARK: Instance fields
+    
+    var viewModel: GeneralCellViewModel! {
+        didSet {
+            self.titleLabel.text = viewModel.title
+            self.subtitleLabel.text = viewModel.subtitle
+            self.subtitleLabel.isHidden = viewModel.subtitle == nil
+        }
+    }
+    
     // MARK: Views
     
     /// Larger label for title text

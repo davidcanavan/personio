@@ -6,29 +6,40 @@
 //
 
 import Foundation
+import UIKit
 import RxSwift
 import RxCocoa
 
 public protocol CandidateListViewModel {
     
     // MARK: - Outputs
-    var loadingStatus: PublishRelay<LoadingStatus> { get }
-    var candidates: PublishRelay<[Candidate]> { get }
     
+    /// Outputs the `LoadingStatus`
+    var loadingStatus: PublishRelay<LoadingStatus> { get }
+    
+    // Outputs the list of candidate models
+    var candidateViewModels: PublishRelay<[GeneralCellViewModel]> { get }
+    
+    /// Loads the data for this view model
     func loadData()
+    
+    /// Opens the candidate detail at the given index
+    /// - Parameter index: The index of the candidate in the source array
+    func openCandidateDetail(at index: Int, in container: UIViewController)
 }
 
 public class DefaultCandidateListViewModel: CandidateListViewModel {
-
+    
     // MARK: - Internal vars
     
     internal let personioRemoteService: PersonioRemoteService
     internal let disposeBag = DisposeBag()
+    internal var candidates: [Candidate]!
     
     // MARK: - Outputs
     
     private(set) public var loadingStatus: PublishRelay<LoadingStatus> = PublishRelay()
-    private(set) public var candidates: PublishRelay<[Candidate]> = PublishRelay()
+    private(set) public var candidateViewModels: PublishRelay<[GeneralCellViewModel]> = PublishRelay()
     
     // MARK: - Initialisers
     
@@ -42,13 +53,28 @@ public class DefaultCandidateListViewModel: CandidateListViewModel {
         self.personioRemoteService.getCandidateList()
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] (candidates) in
-                self?.candidates.accept(candidates)
+                self?.candidates = candidates
+                let candidateCellModels = candidates.map({ candidate in
+                    return DefaultGeneralCellViewModel(
+                        title: candidate.name,
+                        subtitle: candidate.positionApplied
+                    )
+                })
+                self?.candidateViewModels.accept(candidateCellModels)
             }, onError: { [weak self] error in
                 self?.loadingStatus.accept(.loadingError(error: error))
             }, onCompleted: { [weak self] in
                 self?.loadingStatus.accept(.loaded)
             })
             .disposed(by: self.disposeBag)
+    }
+    
+    public func openCandidateDetail(at index: Int, in container: UIViewController) {
+        let candidate = self.candidates[index]
+        let viewModel = DefaultCandidateDetailViewModel(candidate: candidate)
+        let viewController = CandidateDetailViewController()
+        viewController.viewModel = viewModel
+        container.navigationController?.pushViewController(viewController, animated: true)
     }
     
 }
