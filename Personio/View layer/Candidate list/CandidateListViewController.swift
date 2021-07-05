@@ -33,8 +33,33 @@ class CandidateListViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
+        self.viewModel.candidates.bind { [weak self] (candidates) in
+            self?.candidates = candidates
+            self?.tableView.reloadData()
+        }.disposed(by: disposeBag)
+        
         return tableView
     }()
+    
+    lazy var loadingView: UIView = {
+//        let viewModel = LoadingViewModel()
+        let loadingView = LoadingView()
+        self.viewModel.loading.bind { [weak loadingView] (loadingStatus) in
+            switch loadingStatus {
+            case .loaded:
+                loadingView?.alpha = 0
+            case .loading:
+                loadingView?.alpha = 1
+            case .loadingError(let error):
+                print(error)
+            }
+        }.disposed(by: self.disposeBag)
+        return loadingView
+    }()
+    
+//    lazy var loadingErrorView: UIView = {
+//
+//    }()
     
     // MARK: - Lifecycle
 
@@ -43,11 +68,6 @@ class CandidateListViewController: UIViewController {
         self.title = "Candidates"
         
         self.viewModel.loadData()
-        
-        self.viewModel.candidates.bind { [weak self] (candidates) in
-            self?.candidates = candidates
-            self?.tableView.reloadData()
-        }.disposed(by: disposeBag)
     }
     
     override func loadView() {
@@ -56,6 +76,9 @@ class CandidateListViewController: UIViewController {
         
         self.view.addSubview(self.tableView)
         self.tableView.fillToSuperviewMargins()
+        
+        self.view.addSubview(self.loadingView)
+        self.loadingView.centerInSuperView()
     }
     
 }

@@ -39,6 +39,8 @@
 		2BFBDEE8268E6A2300C3D1C9 /* candidates.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BFBDEE7268E6A2300C3D1C9 /* candidates.json */; };
 		2BFE1ED9269256FE009F3804 /* CandidateListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFE1ED8269256FE009F3804 /* CandidateListViewModel.swift */; };
 		2BFE1EE426926247009F3804 /* LoadingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFE1EE326926247009F3804 /* LoadingStatus.swift */; };
+		2BFE1EEA26927A1C009F3804 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFE1EE926927A1C009F3804 /* LoadingView.swift */; };
+		2BFE1EF126927C7E009F3804 /* LoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFE1EF026927C7E009F3804 /* LoadingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +116,8 @@
 		2BFBDEE7268E6A2300C3D1C9 /* candidates.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = candidates.json; sourceTree = "<group>"; };
 		2BFE1ED8269256FE009F3804 /* CandidateListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateListViewModel.swift; sourceTree = "<group>"; };
 		2BFE1EE326926247009F3804 /* LoadingStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingStatus.swift; sourceTree = "<group>"; };
+		2BFE1EE926927A1C009F3804 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		2BFE1EF026927C7E009F3804 /* LoadingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				2BFE1EE22692623B009F3804 /* General */,
+				2BFE1EED26927C6C009F3804 /* Loading views */,
 				2BFE1ED5269256F0009F3804 /* Candidate list */,
 				2B68FC90268EEF9B00B3F7F5 /* GeneralCell.swift */,
 				2B718344268F0A1400AEBBF6 /* UIView+.swift */,
@@ -309,6 +314,15 @@
 			path = General;
 			sourceTree = "<group>";
 		};
+		2BFE1EED26927C6C009F3804 /* Loading views */ = {
+			isa = PBXGroup;
+			children = (
+				2BFE1EE926927A1C009F3804 /* LoadingView.swift */,
+				2BFE1EF026927C7E009F3804 /* LoadingViewModel.swift */,
+			);
+			path = "Loading views";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -451,9 +465,11 @@
 				2B4D95C726923C5A00DBC519 /* PersonioServiceFactory.swift in Sources */,
 				2BB04D35268E1FCA00C82A4F /* PersonioRemoteService.swift in Sources */,
 				2BB04D1C268E12A900C82A4F /* GenericListResponse.swift in Sources */,
+				2BFE1EEA26927A1C009F3804 /* LoadingView.swift in Sources */,
 				2BFE1EE426926247009F3804 /* LoadingStatus.swift in Sources */,
 				2BFBDEE1268E6A0100C3D1C9 /* MockPersonioRemoteService.swift in Sources */,
 				2BB04CC0268DEF6500C82A4F /* CandidateListViewController.swift in Sources */,
+				2BFE1EF126927C7E009F3804 /* LoadingViewModel.swift in Sources */,
 				2BB04CBC268DEF6500C82A4F /* AppDelegate.swift in Sources */,
 				2BFE1ED9269256FE009F3804 /* CandidateListViewModel.swift in Sources */,
 				2B4D95C32691E52D00DBC519 /* RemoteNetworkService.swift in Sources */,
