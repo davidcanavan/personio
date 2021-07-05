@@ -6,14 +6,8 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
 
 public class LoadingView: UIView {
-    
-    // MARK: - Internal vars
-    internal var viewModel: LoadingViewModel!
-    internal let disposeBag = DisposeBag()
     
     // MARK: - Initialisers
     
@@ -34,28 +28,15 @@ public class LoadingView: UIView {
     
     public lazy var loadingIndicator: UIActivityIndicatorView = {
         let loadingIndicator = UIActivityIndicatorView(style: .large)
+        loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
         loadingIndicator.startAnimating()
         return loadingIndicator
-    }()
-    
-    public lazy var loadingTextLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Loading..."
-//        self.viewModel.loadingText.bind(to: label.rx.text).disposed(by: self.disposeBag)
-        return label
-    }()
-    
-    public lazy var contentStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [loadingIndicator, loadingTextLabel])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        return stackView
     }()
     
     // MARK: - Lifecycle
     
     public func loadView() {
-        self.addSubview(self.contentStackView)
-        self.contentStackView.fillToSuperviewMargins()
+        self.addSubview(self.loadingIndicator)
+        self.loadingIndicator.centerInSuperView()
     }
 }

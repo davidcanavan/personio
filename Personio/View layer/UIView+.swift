@@ -7,7 +7,11 @@
 
 import UIKit
 
+/// Conventience extensions to UIView to handle layouts
 public extension UIView {
+    
+    /// Default time interval used in the app for animations
+    static var defaultAnimationDuration: TimeInterval = 0.4
     
     func fillToSuperviewMargins() {
         

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2B4D95B92691DA0600DBC519 /* candidates_case_success.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B4D95B82691DA0600DBC519 /* candidates_case_success.json */; };
-		2B4D95BF2691DA3F00DBC519 /* candidates_case_parsing_error.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B4D95BE2691DA3F00DBC519 /* candidates_case_parsing_error.json */; };
 		2B4D95C32691E52D00DBC519 /* RemoteNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4D95C22691E52D00DBC519 /* RemoteNetworkService.swift */; };
 		2B4D95C726923C5A00DBC519 /* PersonioServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4D95C626923C5A00DBC519 /* PersonioServiceFactory.swift */; };
 		2B68FC91268EEF9B00B3F7F5 /* GeneralCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B68FC90268EEF9B00B3F7F5 /* GeneralCell.swift */; };
@@ -18,7 +17,7 @@
 		2BB04CC0268DEF6500C82A4F /* CandidateListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB04CBF268DEF6500C82A4F /* CandidateListViewController.swift */; };
 		2BB04CC5268DEF6700C82A4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BB04CC4268DEF6700C82A4F /* Assets.xcassets */; };
 		2BB04CC8268DEF6700C82A4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BB04CC6268DEF6700C82A4F /* LaunchScreen.storyboard */; };
-		2BB04CD3268DEF6700C82A4F /* PersonioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB04CD2268DEF6700C82A4F /* PersonioTests.swift */; };
+		2BB04CD3268DEF6700C82A4F /* CandidateListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB04CD2268DEF6700C82A4F /* CandidateListViewModelTests.swift */; };
 		2BB04CDE268DEF6700C82A4F /* PersonioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB04CDD268DEF6700C82A4F /* PersonioUITests.swift */; };
 		2BB04D04268DFD1400C82A4F /* RxCocoa.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB04D00268DFD1400C82A4F /* RxCocoa.xcframework */; };
 		2BB04D05268DFD1400C82A4F /* RxCocoa.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB04D00268DFD1400C82A4F /* RxCocoa.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -40,7 +39,10 @@
 		2BFE1ED9269256FE009F3804 /* CandidateListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFE1ED8269256FE009F3804 /* CandidateListViewModel.swift */; };
 		2BFE1EE426926247009F3804 /* LoadingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFE1EE326926247009F3804 /* LoadingStatus.swift */; };
 		2BFE1EEA26927A1C009F3804 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFE1EE926927A1C009F3804 /* LoadingView.swift */; };
-		2BFE1EF126927C7E009F3804 /* LoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFE1EF026927C7E009F3804 /* LoadingViewModel.swift */; };
+		2BFE1EF8269337A2009F3804 /* LoadingErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFE1EF7269337A2009F3804 /* LoadingErrorView.swift */; };
+		2BFE1F0F26933C35009F3804 /* LoadingManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFE1F0E26933C35009F3804 /* LoadingManagerView.swift */; };
+		2BFE1F1A26933EAB009F3804 /* LoadingManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFE1F1926933EAB009F3804 /* LoadingManagerViewModel.swift */; };
+		2BFE1F1E26935038009F3804 /* MockServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFE1F1D26935038009F3804 /* MockServerResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,7 +82,6 @@
 
 /* Begin PBXFileReference section */
 		2B4D95B82691DA0600DBC519 /* candidates_case_success.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = candidates_case_success.json; sourceTree = "<group>"; };
-		2B4D95BE2691DA3F00DBC519 /* candidates_case_parsing_error.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = candidates_case_parsing_error.json; sourceTree = "<group>"; };
 		2B4D95C22691E52D00DBC519 /* RemoteNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNetworkService.swift; sourceTree = "<group>"; };
 		2B4D95C626923C5A00DBC519 /* PersonioServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonioServiceFactory.swift; sourceTree = "<group>"; };
 		2B68FC90268EEF9B00B3F7F5 /* GeneralCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCell.swift; sourceTree = "<group>"; };
@@ -93,7 +94,7 @@
 		2BB04CC7268DEF6700C82A4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2BB04CC9268DEF6700C82A4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BB04CCE268DEF6700C82A4F /* PersonioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PersonioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2BB04CD2268DEF6700C82A4F /* PersonioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonioTests.swift; sourceTree = "<group>"; };
+		2BB04CD2268DEF6700C82A4F /* CandidateListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateListViewModelTests.swift; sourceTree = "<group>"; };
 		2BB04CD4268DEF6700C82A4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BB04CD9268DEF6700C82A4F /* PersonioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PersonioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BB04CDD268DEF6700C82A4F /* PersonioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonioUITests.swift; sourceTree = "<group>"; };
@@ -117,7 +118,10 @@
 		2BFE1ED8269256FE009F3804 /* CandidateListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateListViewModel.swift; sourceTree = "<group>"; };
 		2BFE1EE326926247009F3804 /* LoadingStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingStatus.swift; sourceTree = "<group>"; };
 		2BFE1EE926927A1C009F3804 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		2BFE1EF026927C7E009F3804 /* LoadingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewModel.swift; sourceTree = "<group>"; };
+		2BFE1EF7269337A2009F3804 /* LoadingErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingErrorView.swift; sourceTree = "<group>"; };
+		2BFE1F0E26933C35009F3804 /* LoadingManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingManagerView.swift; sourceTree = "<group>"; };
+		2BFE1F1926933EAB009F3804 /* LoadingManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingManagerViewModel.swift; sourceTree = "<group>"; };
+		2BFE1F1D26935038009F3804 /* MockServerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockServerResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,7 +158,6 @@
 			isa = PBXGroup;
 			children = (
 				2B4D95B82691DA0600DBC519 /* candidates_case_success.json */,
-				2B4D95BE2691DA3F00DBC519 /* candidates_case_parsing_error.json */,
 			);
 			path = "Candidates json";
 			sourceTree = "<group>";
@@ -211,7 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				2B4D95B72691D9D400DBC519 /* Candidates json */,
-				2BB04CD2268DEF6700C82A4F /* PersonioTests.swift */,
+				2BB04CD2268DEF6700C82A4F /* CandidateListViewModelTests.swift */,
 				2BB04CD4268DEF6700C82A4F /* Info.plist */,
 			);
 			path = PersonioTests;
@@ -245,7 +248,6 @@
 		2BB04D11268E0B0B00C82A4F /* Service layer */ = {
 			isa = PBXGroup;
 			children = (
-				2BB04D13268E0B1A00C82A4F /* Local layer */,
 				2BB04D12268E0B1200C82A4F /* Remote layer */,
 			);
 			path = "Service layer";
@@ -261,13 +263,6 @@
 				2B4D95C626923C5A00DBC519 /* PersonioServiceFactory.swift */,
 			);
 			path = "Remote layer";
-			sourceTree = "<group>";
-		};
-		2BB04D13268E0B1A00C82A4F /* Local layer */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Local layer";
 			sourceTree = "<group>";
 		};
 		2BB04D14268E0B2500C82A4F /* Model layer */ = {
@@ -291,6 +286,7 @@
 		2BFBDEDF268E69F000C3D1C9 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				2BFE1F1D26935038009F3804 /* MockServerResponse.swift */,
 				2BFBDEE0268E6A0100C3D1C9 /* MockPersonioRemoteService.swift */,
 				2BFBDEE7268E6A2300C3D1C9 /* candidates.json */,
 			);
@@ -317,10 +313,20 @@
 		2BFE1EED26927C6C009F3804 /* Loading views */ = {
 			isa = PBXGroup;
 			children = (
+				2BFE1F1626933E9C009F3804 /* Loading manager view */,
 				2BFE1EE926927A1C009F3804 /* LoadingView.swift */,
-				2BFE1EF026927C7E009F3804 /* LoadingViewModel.swift */,
+				2BFE1EF7269337A2009F3804 /* LoadingErrorView.swift */,
 			);
 			path = "Loading views";
+			sourceTree = "<group>";
+		};
+		2BFE1F1626933E9C009F3804 /* Loading manager view */ = {
+			isa = PBXGroup;
+			children = (
+				2BFE1F0E26933C35009F3804 /* LoadingManagerView.swift */,
+				2BFE1F1926933EAB009F3804 /* LoadingManagerViewModel.swift */,
+			);
+			path = "Loading manager view";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -442,7 +448,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B4D95B92691DA0600DBC519 /* candidates_case_success.json in Resources */,
-				2B4D95BF2691DA3F00DBC519 /* candidates_case_parsing_error.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,13 +468,16 @@
 				2B68FC91268EEF9B00B3F7F5 /* GeneralCell.swift in Sources */,
 				2BB04D50268E601500C82A4F /* GenericServerErrorResponse.swift in Sources */,
 				2B4D95C726923C5A00DBC519 /* PersonioServiceFactory.swift in Sources */,
+				2BFE1F1A26933EAB009F3804 /* LoadingManagerViewModel.swift in Sources */,
 				2BB04D35268E1FCA00C82A4F /* PersonioRemoteService.swift in Sources */,
 				2BB04D1C268E12A900C82A4F /* GenericListResponse.swift in Sources */,
+				2BFE1F1E26935038009F3804 /* MockServerResponse.swift in Sources */,
 				2BFE1EEA26927A1C009F3804 /* LoadingView.swift in Sources */,
 				2BFE1EE426926247009F3804 /* LoadingStatus.swift in Sources */,
+				2BFE1F0F26933C35009F3804 /* LoadingManagerView.swift in Sources */,
 				2BFBDEE1268E6A0100C3D1C9 /* MockPersonioRemoteService.swift in Sources */,
+				2BFE1EF8269337A2009F3804 /* LoadingErrorView.swift in Sources */,
 				2BB04CC0268DEF6500C82A4F /* CandidateListViewController.swift in Sources */,
-				2BFE1EF126927C7E009F3804 /* LoadingViewModel.swift in Sources */,
 				2BB04CBC268DEF6500C82A4F /* AppDelegate.swift in Sources */,
 				2BFE1ED9269256FE009F3804 /* CandidateListViewModel.swift in Sources */,
 				2B4D95C32691E52D00DBC519 /* RemoteNetworkService.swift in Sources */,
@@ -484,7 +492,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2BB04CD3268DEF6700C82A4F /* PersonioTests.swift in Sources */,
+				2BB04CD3268DEF6700C82A4F /* CandidateListViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

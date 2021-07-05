@@ -9,7 +9,7 @@ import XCTest
 import RxSwift
 @testable import Personio
 
-class PersonioTests: XCTestCase {
+class CandaidateListViewModelTests: XCTestCase {
     
     var disposeBag: DisposeBag!
 
@@ -21,23 +21,14 @@ class PersonioTests: XCTestCase {
         self.disposeBag = nil
     }
 
-    func test_candidateModelParsingSuccess() throws {
-//        let candidates: [Candidate] = [
-//            
-//        ]
-//        
-//        MockPersonioRemoteService()
-//            .getCandidateList()
-//            .subscribe(onNext: { candidates in
-//                XCTAssert(self.can)
-//                self?.candidates = candidates
-//                self?.tableView.reloadData()
-//            }, onError: { error in
-//                XCTFail("Unexpected error")
-//            } ).disposed(by: self.disposeBag)
-//        
-//        
-//        let mockRemoteService = 
+    func test_candidateListViewModel_looadingSuccess() throws {
+        let mockResponses = []
+        
+        
+    }
+    
+    
+    func test_candidateListViewModel_looadingError() throws {
     }
 
 }

@@ -11,8 +11,9 @@ import RxCocoa
 
 public protocol CandidateListViewModel {
     
-    var loading: PublishRelay<LoadingStatus> {get}
-    var candidates: PublishRelay<[Candidate]> {get}
+    // MARK: - Outputs
+    var loadingStatus: PublishRelay<LoadingStatus> { get }
+    var candidates: PublishRelay<[Candidate]> { get }
     
     func loadData()
 }
@@ -26,7 +27,7 @@ public class DefaultCandidateListViewModel: CandidateListViewModel {
     
     // MARK: - Outputs
     
-    private(set) public var loading: PublishRelay<LoadingStatus> = PublishRelay()
+    private(set) public var loadingStatus: PublishRelay<LoadingStatus> = PublishRelay()
     private(set) public var candidates: PublishRelay<[Candidate]> = PublishRelay()
     
     // MARK: - Initialisers
@@ -36,16 +37,16 @@ public class DefaultCandidateListViewModel: CandidateListViewModel {
     }
     
     public func loadData() {
-        self.loading.accept(.loading)
+        self.loadingStatus.accept(.loading)
         
         self.personioRemoteService.getCandidateList()
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] (candidates) in
                 self?.candidates.accept(candidates)
             }, onError: { [weak self] error in
-                self?.loading.accept(.loadingError(error: error))
+                self?.loadingStatus.accept(.loadingError(error: error))
             }, onCompleted: { [weak self] in
-                self?.loading.accept(.loaded)
+                self?.loadingStatus.accept(.loaded)
             })
             .disposed(by: self.disposeBag)
     }

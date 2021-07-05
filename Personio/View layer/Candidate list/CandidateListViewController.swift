@@ -41,44 +41,33 @@ class CandidateListViewController: UIViewController {
         return tableView
     }()
     
-    lazy var loadingView: UIView = {
-//        let viewModel = LoadingViewModel()
-        let loadingView = LoadingView()
-        self.viewModel.loading.bind { [weak loadingView] (loadingStatus) in
-            switch loadingStatus {
-            case .loaded:
-                loadingView?.alpha = 0
-            case .loading:
-                loadingView?.alpha = 1
-            case .loadingError(let error):
-                print(error)
-            }
+    lazy var loadingManagerView: LoadingManagerView = {
+        let loadingManagerViewModel = DefaultLoadingManagerViewModel(loadingStatus: self.viewModel.loadingStatus)
+        loadingManagerViewModel.reloadRequested.bind { [weak self] in
+            self?.viewModel.loadData()
         }.disposed(by: self.disposeBag)
-        return loadingView
+        let loadingManagerView = LoadingManagerView(
+            viewModel: loadingManagerViewModel,
+            loadedView: self.tableView
+        )
+        loadingManagerView.translatesAutoresizingMaskIntoConstraints = false
+        return loadingManagerView
     }()
-    
-//    lazy var loadingErrorView: UIView = {
-//
-//    }()
     
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Candidates"
-        
         self.viewModel.loadData()
     }
     
     override func loadView() {
         super.loadView()
         self.view.backgroundColor = .white
-        
-        self.view.addSubview(self.tableView)
-        self.tableView.fillToSuperviewMargins()
-        
-        self.view.addSubview(self.loadingView)
-        self.loadingView.centerInSuperView()
+
+        self.view.addSubview(self.loadingManagerView)
+        self.loadingManagerView.fillToSuperviewMargins()
     }
     
 }
