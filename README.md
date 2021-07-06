@@ -5,9 +5,9 @@
 * In terminal open up the project folder (the one that containts the Personio.xcodeproj file)
 * run the command carthage bootstrap --use-xcframeworks --platform iOS
 * Open up Personio.xcodeproj in XCode
-** Highlight "Personio" in the left panel
-** highlight the "Personio" target
-** Notice the "Frameworks, Libraries and Embedded Content" section
+  * Highlight "Personio" in the left panel
+  * highlight the "Personio" target
+  * Notice the "Frameworks, Libraries and Embedded Content" section
 ![alt text](/Images/xcode_screenshot.png)
 * Open up the folder "Carthage/Build" from your project folder
 * Delete the items from the "Frameworks, Libraries and Embedded Content" section
