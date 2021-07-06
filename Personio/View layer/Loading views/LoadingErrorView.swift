@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// UIView that gives the user the option to retry given they've encountered an error
 public class LoadingErrorView: UIView {
     
     // MARK: - Initialisers
@@ -26,12 +27,14 @@ public class LoadingErrorView: UIView {
     
     // MARK: - User interface
     
+    /// The main text to show the user
     public lazy var textLabel: UILabel = {
         let textLabel = UILabel()
         textLabel.text = "We encountered an unexpected error"
         return textLabel
     }()
     
+    /// The retry button
     public lazy var actionButton: UIButton = {
         let actionButton = UIButton(type: .roundedRect)
         actionButton.backgroundColor = .systemBlue
@@ -41,6 +44,7 @@ public class LoadingErrorView: UIView {
         return actionButton
     }()
     
+    /// Stackview for layout
     public lazy var contentStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [self.textLabel, self.actionButton])
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -51,6 +55,7 @@ public class LoadingErrorView: UIView {
     
     // MARK: - Lifecycle
     
+    /// Handles UI, layout and bindings
     public func loadView() {
         self.addSubview(self.contentStackView)
         self.contentStackView.centerInSuperView()

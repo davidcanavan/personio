@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// UIView that shows a loading indicator
 public class LoadingView: UIView {
     
     // MARK: - Initialisers
@@ -35,6 +36,7 @@ public class LoadingView: UIView {
     
     // MARK: - Lifecycle
     
+    /// Handles UI, layout and bindings
     public func loadView() {
         self.addSubview(self.loadingIndicator)
         self.loadingIndicator.centerInSuperView()

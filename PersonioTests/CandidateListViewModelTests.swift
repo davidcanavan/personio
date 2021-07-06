@@ -7,7 +7,6 @@
 
 import XCTest
 import RxSwift
-import RxBlocking
 @testable import Personio
 
 class CandidateListViewModelTests: XCTestCase {
@@ -40,24 +39,28 @@ class CandidateListViewModelTests: XCTestCase {
         
         // Mock the call and get the values
         // Check that we're getting only 2 loading enum values .loading and .loaded
-        _ = viewModel.loadingStatus
+        viewModel.loadingStatus
             .buffer(timeSpan: .milliseconds(100), count: 10, scheduler: MainScheduler.asyncInstance)
             .subscribe(onNext: { (loadingStatuses) in
                 XCTAssertEqual(loadingStatuses.count, 2)
                 XCTAssertEqual(loadingStatuses[0], LoadingStatus.loading)
                 XCTAssertEqual(loadingStatuses[1], LoadingStatus.loaded)
                 loadingStatusExpectation.fulfill()
-        })
+            }).disposed(by: disposeBag)
         // Check that we're getting the correct candidates back and only once
-        _ = viewModel.candidates
+        viewModel.candidateViewModels
             .buffer(timeSpan: .milliseconds(100), count: 10, scheduler: MainScheduler.asyncInstance)
-            .subscribe(onNext: { (nestedCandidatesArray) in
-                XCTAssertEqual(nestedCandidatesArray.count, 1)
+            .subscribe(onNext: { (nestedViewModelArray) in
+                XCTAssertEqual(nestedViewModelArray.count, 1)
                 let url = self.getJSONFileURLInTestBundle(forResource: "candidates_case_success")
                 let comparison: GenericListResponse<Candidate> = self.loadObjectFromJSON(from: url)
-                XCTAssertEqual(nestedCandidatesArray.first!, comparison.data)
+                let candidates: [Candidate] = nestedViewModelArray.first!.map({
+                    let cellViewModel = $0 as! CandidateGeneralCellViewModel
+                    return cellViewModel.candidate
+                })
+                XCTAssertEqual(candidates, comparison.data)
                 candidatesExpectation.fulfill()
-        })
+        }).disposed(by: disposeBag)
         viewModel.loadData()
     }
     
@@ -80,21 +83,21 @@ class CandidateListViewModelTests: XCTestCase {
         
         // Mock the call and get the values
         // Check that we're getting only 2 loading enum values .loading and .loadingError
-        _ = viewModel.loadingStatus
+        viewModel.loadingStatus
             .buffer(timeSpan: .milliseconds(100), count: 10, scheduler: MainScheduler.asyncInstance)
             .subscribe(onNext: { (loadingStatuses) in
                 XCTAssertEqual(loadingStatuses.count, 2)
                 XCTAssertEqual(loadingStatuses[0], LoadingStatus.loading)
                 XCTAssertEqual(loadingStatuses[1], LoadingStatus.loadingError(error: MockError.mock))
                 loadingStatusExpectation.fulfill()
-        })
+        }).disposed(by: disposeBag)
         // Check that we're getting the correct candidates back and only once
-        _ = viewModel.candidates
+        viewModel.candidateViewModels
             .buffer(timeSpan: .milliseconds(100), count: 10, scheduler: MainScheduler.asyncInstance)
-            .subscribe(onNext: { (nestedCandidatesArray) in
-                XCTAssertEqual(nestedCandidatesArray.count, 0)
+            .subscribe(onNext: { (nestedViewModelArray) in
+                XCTAssertEqual(nestedViewModelArray.count, 0)
                 candidatesExpectation.fulfill()
-        })
+        }).disposed(by: disposeBag)
         viewModel.loadData()
     }
     

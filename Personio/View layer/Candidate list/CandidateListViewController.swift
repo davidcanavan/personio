@@ -18,11 +18,12 @@ class CandidateListViewController: UIViewController {
     /// Candidate view models for this view
     internal var candidateViewModels: [GeneralCellViewModel]?
     
-    /// Bag for disposed subuscriptions
+    /// Dispose bag for Rx subsriptions
     internal let disposeBag = DisposeBag()
     
     // MARK: - User interface
     
+    /// Tableview for the main interface
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -42,6 +43,7 @@ class CandidateListViewController: UIViewController {
         return tableView
     }()
     
+    /// View to handle screen loading states
     lazy var loadingManagerView: LoadingManagerView = {
         let loadingManagerViewModel = DefaultLoadingManagerViewModel(loadingStatus: self.viewModel.loadingStatus)
         loadingManagerViewModel.reloadRequested.bind { [weak self] in
@@ -65,15 +67,18 @@ class CandidateListViewController: UIViewController {
         self.viewModel.loadData()
     }
     
+    /// Loads UI, layout and bindings
     override func loadView() {
         super.loadView()
         self.view.backgroundColor = .white
 
         self.view.addSubview(self.loadingManagerView)
-        self.loadingManagerView.fillToSuperviewMargins()
+        self.loadingManagerView.fillToSuperview(margins: true)
     }
     
 }
+
+// MARK: - UITableViewDataSource
 
 extension CandidateListViewController: UITableViewDataSource {
     
@@ -92,9 +97,18 @@ extension CandidateListViewController: UITableViewDataSource {
     
 }
 
+// MARK: - UITableViewDelegate
+
 extension CandidateListViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.viewModel.openCandidateDetail(at: indexPath.row, in: self)
+        
+        // Null check, but can never be null if this method can be called
+        guard let viewModel = self.candidateViewModels?[indexPath.row] else {
+            return
+        }
+        
+        // Open the route
+        self.viewModel.openCandidateDetail(for: viewModel, in: self)
     }
 }

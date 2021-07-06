@@ -7,11 +7,15 @@
 
 import Foundation
 
+/// Generic model enum that handles any component's loading state
 public enum LoadingStatus: Equatable {
     case loading
     case loaded
     case loadingError(error: Error)
     
+    // MARK: - Equatable
+    
+    /// Note: used for testing
     public static func == (lhs: LoadingStatus, rhs: LoadingStatus) -> Bool {
         
         switch (lhs, rhs) {

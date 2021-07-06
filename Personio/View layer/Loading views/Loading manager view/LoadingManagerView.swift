@@ -9,11 +9,18 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+/// Generic view that handles loading UI based on the values in the `LoadingStatus` enum
 public class LoadingManagerView: UIView {
     
     // MARK: - Internal vars
+    
+    /// Dispose bag for Rx subsriptions
     internal let disposeBag = DisposeBag()
+    
+    /// View model
     internal var viewModel: LoadingManagerViewModel!
+    
+    /// View to show when the component state has changed to `.loaded`
     internal var loadedView: UIView!
     
     // MARK: - Initialisers
@@ -26,6 +33,10 @@ public class LoadingManagerView: UIView {
         fatalError("Not implemented, use init with frame instead")
     }
     
+    /// Creates a new `LoadingManagerView`
+    /// - Parameters:
+    ///   - viewModel: The view model that drives the underlying view
+    ///   - loadedView: View to show when the component state has changed to `.loaded`
     convenience init(viewModel: LoadingManagerViewModel, loadedView: UIView) {
         self.init(frame: CGRect.zero)
         self.viewModel = viewModel
@@ -37,12 +48,14 @@ public class LoadingManagerView: UIView {
     
     // MARK: - User interface
     
+    /// View to display when loading
     public lazy var loadingView: LoadingView = {
         let loadingView = LoadingView()
         loadingView.translatesAutoresizingMaskIntoConstraints = false
         return loadingView
     }()
     
+    /// View to display when an error has been encountered
     public lazy var loadingErrorView: LoadingErrorView = {
         let loadingErrorView = LoadingErrorView()
         loadingErrorView.translatesAutoresizingMaskIntoConstraints = false
@@ -55,6 +68,7 @@ public class LoadingManagerView: UIView {
     
     // MARK: - Lifecycle
     
+    /// Handles UI, layout and bindings
     public func loadView() {
         
         self.viewModel.loadingStatus.bind { [weak self] (loadingStatus) in
@@ -70,6 +84,8 @@ public class LoadingManagerView: UIView {
         
     }
     
+    /// Removes all subviews from the `LoadingManagerView` but ignores the specified one
+    /// View removals are animated
     internal func removeAllSubviews(except exceptionView: UIView) {
         let filteredSubviews = self.subviews.filter({ $0 != exceptionView })
         UIView.animate(withDuration: UIView.defaultAnimationDuration, animations: {
@@ -79,26 +95,30 @@ public class LoadingManagerView: UIView {
         })
     }
     
+    /// Adds a subview and fits it to the `LoadingManagerView` margins with animation
     internal func addAndFillSubviewAnimated(_ subview: UIView) {
         subview.alpha = 0
         self.addSubview(subview)
-        subview.fillToSuperviewMargins()
+        subview.fillToSuperview(margins: true)
         UIView.animate(withDuration: UIView.defaultAnimationDuration, animations: {
             subview.alpha = 1
         })
     }
     
+    /// Updates the view given that we've recieved a `.loading` status
     internal func handleLoadingStatus() {
         self.addAndFillSubviewAnimated(self.loadingView)
         self.removeAllSubviews(except: self.loadingView)
     }
     
+    /// Updates the view given that we've recieved a `.loadingError` status
     internal func handleErrorStatus(error: Error) {
         self.addAndFillSubviewAnimated(self.loadingErrorView)
         self.removeAllSubviews(except: self.loadingErrorView)
         print(error)
     }
     
+    /// Updates the view given that we've recieved a `.loaded` status
     internal func handleLoadedStatus() {
         self.addAndFillSubviewAnimated(self.loadedView)
         self.removeAllSubviews(except: self.loadedView)

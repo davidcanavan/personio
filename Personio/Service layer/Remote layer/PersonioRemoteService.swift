@@ -31,6 +31,8 @@ public class LivePersonioRemoteService: PersonioRemoteService {
         self.remoteNetworkService = remoteService
     }
     
+    // MARK: - PersonioRemoteService implementation
+    
     /// Returns the list of candidates from the candidate endpoint
     /// - Returns: The candidate list
     public func getCandidateList() -> Observable<[Candidate]> {

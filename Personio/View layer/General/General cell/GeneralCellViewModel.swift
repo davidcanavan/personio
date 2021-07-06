@@ -7,11 +7,13 @@
 
 import Foundation
 
+/// View model for the `GeneralCell` type
 public protocol GeneralCellViewModel {
     var title: String { get }
     var subtitle: String? { get }
 }
 
+/// Default implementation of the `GeneralCellViewModel` returning basic strings
 public class DefaultGeneralCellViewModel: GeneralCellViewModel {
     
     public var title: String

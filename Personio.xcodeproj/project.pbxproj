@@ -46,6 +46,8 @@
 		2BFE1F2F2693A3F0009F3804 /* CandidateDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFE1F2E2693A3F0009F3804 /* CandidateDetailViewModel.swift */; };
 		2BFE1F352693A42F009F3804 /* CandidateDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFE1F342693A42F009F3804 /* CandidateDetailViewController.swift */; };
 		2BFE1F3C2693B4A1009F3804 /* GeneralCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFE1F3B2693B4A1009F3804 /* GeneralCellViewModel.swift */; };
+		2BFE1F4426944A56009F3804 /* CandidateGeneralCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFE1F4326944A56009F3804 /* CandidateGeneralCellViewModel.swift */; };
+		2BFE1F4826945A36009F3804 /* CandidateDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFE1F4726945A36009F3804 /* CandidateDetailViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +130,8 @@
 		2BFE1F2E2693A3F0009F3804 /* CandidateDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateDetailViewModel.swift; sourceTree = "<group>"; };
 		2BFE1F342693A42F009F3804 /* CandidateDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateDetailViewController.swift; sourceTree = "<group>"; };
 		2BFE1F3B2693B4A1009F3804 /* GeneralCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCellViewModel.swift; sourceTree = "<group>"; };
+		2BFE1F4326944A56009F3804 /* CandidateGeneralCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateGeneralCellViewModel.swift; sourceTree = "<group>"; };
+		2BFE1F4726945A36009F3804 /* CandidateDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateDetailViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +225,7 @@
 			children = (
 				2B4D95B72691D9D400DBC519 /* Candidates json */,
 				2BB04CD2268DEF6700C82A4F /* CandidateListViewModelTests.swift */,
+				2BFE1F4726945A36009F3804 /* CandidateDetailViewModelTests.swift */,
 				2BB04CD4268DEF6700C82A4F /* Info.plist */,
 			);
 			path = PersonioTests;
@@ -304,6 +309,7 @@
 			children = (
 				2BB04CBF268DEF6500C82A4F /* CandidateListViewController.swift */,
 				2BFE1ED8269256FE009F3804 /* CandidateListViewModel.swift */,
+				2BFE1F4326944A56009F3804 /* CandidateGeneralCellViewModel.swift */,
 			);
 			path = "Candidate list";
 			sourceTree = "<group>";
@@ -503,6 +509,7 @@
 				2BFE1F0F26933C35009F3804 /* LoadingManagerView.swift in Sources */,
 				2BFBDEE1268E6A0100C3D1C9 /* MockPersonioRemoteService.swift in Sources */,
 				2BFE1EF8269337A2009F3804 /* LoadingErrorView.swift in Sources */,
+				2BFE1F4426944A56009F3804 /* CandidateGeneralCellViewModel.swift in Sources */,
 				2BB04CC0268DEF6500C82A4F /* CandidateListViewController.swift in Sources */,
 				2BB04CBC268DEF6500C82A4F /* AppDelegate.swift in Sources */,
 				2BFE1ED9269256FE009F3804 /* CandidateListViewModel.swift in Sources */,
@@ -521,6 +528,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BB04CD3268DEF6700C82A4F /* CandidateListViewModelTests.swift in Sources */,
+				2BFE1F4826945A36009F3804 /* CandidateDetailViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

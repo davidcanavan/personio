@@ -24,8 +24,9 @@ public protocol CandidateListViewModel {
     func loadData()
     
     /// Opens the candidate detail at the given index
-    /// - Parameter index: The index of the candidate in the source array
-    func openCandidateDetail(at index: Int, in container: UIViewController)
+    /// - Parameter viewModel: The index of the candidate in the source array
+    /// - Parameter container: The view controller to navigate from
+    func openCandidateDetail(for viewModel: GeneralCellViewModel, in container: UIViewController)
 }
 
 public class DefaultCandidateListViewModel: CandidateListViewModel {
@@ -33,8 +34,9 @@ public class DefaultCandidateListViewModel: CandidateListViewModel {
     // MARK: - Internal vars
     
     internal let personioRemoteService: PersonioRemoteService
+    
+    /// Dispose bag for Rx subsriptions
     internal let disposeBag = DisposeBag()
-    internal var candidates: [Candidate]!
     
     // MARK: - Outputs
     
@@ -53,12 +55,8 @@ public class DefaultCandidateListViewModel: CandidateListViewModel {
         self.personioRemoteService.getCandidateList()
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] (candidates) in
-                self?.candidates = candidates
-                let candidateCellModels = candidates.map({ candidate in
-                    return DefaultGeneralCellViewModel(
-                        title: candidate.name,
-                        subtitle: candidate.positionApplied
-                    )
+                let candidateCellModels = candidates.map({ candidate -> GeneralCellViewModel in
+                    return CandidateGeneralCellViewModel(candidate: candidate)
                 })
                 self?.candidateViewModels.accept(candidateCellModels)
             }, onError: { [weak self] error in
@@ -69,11 +67,15 @@ public class DefaultCandidateListViewModel: CandidateListViewModel {
             .disposed(by: self.disposeBag)
     }
     
-    public func openCandidateDetail(at index: Int, in container: UIViewController) {
-        let candidate = self.candidates[index]
-        let viewModel = DefaultCandidateDetailViewModel(candidate: candidate)
+    public func openCandidateDetail(for viewModel: GeneralCellViewModel, in container: UIViewController) {
+        
+        guard let viewModel = viewModel as? CandidateGeneralCellViewModel else {
+            return
+        }
+        let candidate = viewModel.candidate
+        let newViewModel = DefaultCandidateDetailViewModel(candidate: candidate)
         let viewController = CandidateDetailViewController()
-        viewController.viewModel = viewModel
+        viewController.viewModel = newViewModel
         container.navigationController?.pushViewController(viewController, animated: true)
     }
     

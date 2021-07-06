@@ -23,7 +23,7 @@ public enum PersonioServiceFactory {
     /// Factory instance of the `PersonioRemoteService`
     public static var personioRemoteService: PersonioRemoteService = {
         
-        // Create some mocks for testing
+//        // Create some mocks for testing
 //        let mockResponses = [
 //            MockServerResponse(
 //                delay: 4,
@@ -31,7 +31,7 @@ public enum PersonioServiceFactory {
 //                jsonURL: nil
 //            ),
 //            MockServerResponse(
-//                delay: 4,
+//                delay: 1,
 //                error: nil,
 //                jsonURL: URL(fileURLWithPath: Bundle.main.path(forResource: "candidates", ofType: "json")!)
 //            )

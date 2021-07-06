@@ -7,10 +7,12 @@
 
 import UIKit
 
+/// Generic tableview cell that handles text with a title and subtitle
 public class GeneralCell: UITableViewCell {
     
     // MARK: Instance fields
     
+    /// View model for the `GeneralCell`
     var viewModel: GeneralCellViewModel! {
         didSet {
             self.titleLabel.text = viewModel.title
@@ -76,12 +78,13 @@ public class GeneralCell: UITableViewCell {
     
     // MARK:- Setup
     
+    /// Sets up the cell
     private func setupView() {
         self.selectionStyle = .none
         self.accessoryType = .disclosureIndicator
         
         self.contentView.addSubview(self.contentStackView)
-        self.contentStackView.fillToSuperviewMargins()
+        self.contentStackView.fillToSuperview(margins: true)
     }
     
 }

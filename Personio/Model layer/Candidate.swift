@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Server model object `Candidate`
 public class Candidate: Codable {
     
     public var id: Int
