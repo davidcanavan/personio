@@ -23,24 +23,24 @@ public enum PersonioServiceFactory {
     /// Factory instance of the `PersonioRemoteService`
     public static var personioRemoteService: PersonioRemoteService = {
         
-//        // Create some mocks for testing
-//        let mockResponses = [
-//            MockServerResponse(
-//                delay: 4,
-//                error: MockError.mock,
-//                jsonURL: nil
-//            ),
-//            MockServerResponse(
-//                delay: 1,
-//                error: nil,
-//                jsonURL: URL(fileURLWithPath: Bundle.main.path(forResource: "candidates", ofType: "json")!)
-//            )
-//        ]
-//
-//        let mockService = MockPersonioRemoteService(mockServerResponses: mockResponses)
-//        return mockService
+        // Create some mocks for testing
+        let mockResponses = [
+            MockServerResponse(
+                delay: 1,
+                error: MockError.mock,
+                jsonURL: nil
+            ),
+            MockServerResponse(
+                delay: 1,
+                error: nil,
+                jsonURL: URL(fileURLWithPath: Bundle.main.path(forResource: "candidates", ofType: "json")!)
+            )
+        ]
+
+        let mockService = MockPersonioRemoteService(mockServerResponses: mockResponses)
+        return mockService
         
-        return LivePersonioRemoteService(with: Self.remoteNetworkService)
+//        return LivePersonioRemoteService(with: Self.remoteNetworkService)
     }()
     
 }

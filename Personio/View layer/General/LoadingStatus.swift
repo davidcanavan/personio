@@ -21,7 +21,7 @@ public enum LoadingStatus: Equatable {
         switch (lhs, rhs) {
         case ( .loadingError(_), .loadingError(_) ):
             return true
-        case ( .loading, .loading ), (.loaded, .loaded):
+        case ( .loading, .loading ), ( .loaded, .loaded ):
             return true
         default:
             return false
