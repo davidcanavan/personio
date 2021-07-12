@@ -29,7 +29,7 @@ public class LiveRemoteNetworkService: RemoteNetworkService {
     public func request<T: Codable>(_ method: HTTPMethod, _ urlString: String) -> Observable<T> {
         
         return Observable.create { (observer) -> Disposable in
-            AF.request(urlString, method: method)
+            let request = AF.request(urlString, method: method)
                 .validate(statusCode: 200..<300)
                 .validate(contentType: ["application/json"])
                 .responseData { (response) in
@@ -45,7 +45,9 @@ public class LiveRemoteNetworkService: RemoteNetworkService {
                         }
                     }
                 }
-            return Disposables.create()
+            return Disposables.create {
+                request.cancel()
+            }
         }
     }
 }
