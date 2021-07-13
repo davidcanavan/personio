@@ -31,6 +31,7 @@ public class LoadingErrorView: UIView {
     public lazy var textLabel: UILabel = {
         let textLabel = UILabel()
         textLabel.text = "We encountered an unexpected error"
+        textLabel.accessibilityIdentifier = "loading.loading_error_view.text_label"
         return textLabel
     }()
     
@@ -41,6 +42,7 @@ public class LoadingErrorView: UIView {
         actionButton.tintColor = .white
         actionButton.layer.cornerRadius = 4
         actionButton.setTitle("Try again", for: .normal)
+        actionButton.accessibilityIdentifier = "loading.loading_error_view.action_button"
         return actionButton
     }()
     

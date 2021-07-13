@@ -43,7 +43,7 @@ public class MockPersonioRemoteService: PersonioRemoteService {
                 observer.onError(error)
                 return Disposables.create()
             }
-            .subscribe(on: MainScheduler.asyncInstance)
+            .subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background))
             .observe(on: MainScheduler.instance)
         }
         // Otherwise load the object from json
@@ -54,7 +54,7 @@ public class MockPersonioRemoteService: PersonioRemoteService {
                 return Observable.just(listResponse.data)
             }
             return Observable.just(listResponse.data)
-                .delay(.seconds(mockResponse.delay), scheduler: MainScheduler.asyncInstance)
+                .delay(.seconds(mockResponse.delay), scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
         }
         
         // Crash the mock if the user didn't add any mock data

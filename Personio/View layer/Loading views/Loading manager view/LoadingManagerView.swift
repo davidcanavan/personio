@@ -52,6 +52,8 @@ public class LoadingManagerView: UIView {
     public lazy var loadingView: LoadingView = {
         let loadingView = LoadingView()
         loadingView.translatesAutoresizingMaskIntoConstraints = false
+        loadingView.accessibilityIdentifier = "loading.loading_view"
+        loadingView.loadingIndicator.accessibilityIdentifier = "loading.loading_view.indicator"
         return loadingView
     }()
     
@@ -59,6 +61,7 @@ public class LoadingManagerView: UIView {
     public lazy var loadingErrorView: LoadingErrorView = {
         let loadingErrorView = LoadingErrorView()
         loadingErrorView.translatesAutoresizingMaskIntoConstraints = false
+        loadingErrorView.accessibilityIdentifier = "loading.loading_error_view"
         loadingErrorView.actionButton.rx.tap
             .throttle(.milliseconds(300), scheduler: MainScheduler.instance) // Stop rage taps
             .bind(to: self.viewModel.reloadRequested)

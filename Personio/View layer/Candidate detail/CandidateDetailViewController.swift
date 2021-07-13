@@ -26,6 +26,7 @@ public class CandidateDetailViewController: UIViewController {
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.accessibilityIdentifier = "candidate_detail.list"
         GeneralCell.register(to: tableView)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 60

@@ -23,10 +23,20 @@ class CandidateListViewController: UIViewController {
     
     // MARK: - User interface
     
+    lazy var resultsLabel: UILabel = {
+        let resultsLabel = UILabel()
+        self.viewModel.candidateViewModels.map({
+            "\($0.count) results"
+        }).bind(to: resultsLabel.rx.text)
+        .disposed(by: self.disposeBag)
+        return resultsLabel
+    }()
+    
     /// Tableview for the main interface
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.accessibilityIdentifier = "candidate_list.list"
         GeneralCell.register(to: tableView)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 60
@@ -43,6 +53,15 @@ class CandidateListViewController: UIViewController {
         return tableView
     }()
     
+    lazy var contentStackView: UIStackView = {
+        let contentStackView = UIStackView(
+            arrangedSubviews: [self.resultsLabel, self.tableView]
+        )
+        contentStackView.translatesAutoresizingMaskIntoConstraints = false
+        contentStackView.axis = .vertical
+        return contentStackView
+    }()
+    
     /// View to handle screen loading states
     lazy var loadingManagerView: LoadingManagerView = {
         let loadingManagerViewModel = DefaultLoadingManagerViewModel(loadingStatus: self.viewModel.loadingStatus)
@@ -51,7 +70,7 @@ class CandidateListViewController: UIViewController {
         }.disposed(by: self.disposeBag)
         let loadingManagerView = LoadingManagerView(
             viewModel: loadingManagerViewModel,
-            loadedView: self.tableView
+            loadedView: self.contentStackView
         )
         loadingManagerView.translatesAutoresizingMaskIntoConstraints = false
         loadingManagerView.preservesSuperviewLayoutMargins = true
