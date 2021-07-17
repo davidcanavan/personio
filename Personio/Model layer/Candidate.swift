@@ -32,17 +32,20 @@ public class Candidate: Codable {
     
 }
 
-extension Candidate: Equatable {
-    
-    public static func == (lhs: Candidate, rhs: Candidate) -> Bool {
-        return lhs.id == rhs.id &&
-            lhs.name == rhs.name &&
-            lhs.email == rhs.email &&
-            lhs.birthDate == rhs.birthDate &&
-            lhs.yearsOfExperience == rhs.yearsOfExperience &&
-            lhs.positionApplied == rhs.positionApplied &&
-            lhs.applicationDate == rhs.applicationDate &&
-            lhs.status == rhs.status
-    }
-    
-}
+//extension Candidate: Hashable {
+//    
+//    public static func == (lhs: Candidate, rhs: Candidate) -> Bool {
+//        return lhs.id == rhs.id &&
+//            lhs.name == rhs.name &&
+//            lhs.email == rhs.email &&
+//            lhs.birthDate == rhs.birthDate &&
+//            lhs.yearsOfExperience == rhs.yearsOfExperience &&
+//            lhs.positionApplied == rhs.positionApplied &&
+//            lhs.applicationDate == rhs.applicationDate &&
+//            lhs.status == rhs.status
+//    }
+//    
+//    public func hash(into hasher: inout Hasher) {
+//        hasher.combine(id)
+//    }
+//}

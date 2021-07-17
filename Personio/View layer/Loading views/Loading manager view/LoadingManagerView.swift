@@ -74,7 +74,7 @@ public class LoadingManagerView: UIView {
     /// Handles UI, layout and bindings
     public func loadView() {
         
-        self.viewModel.loadingStatus.bind { [weak self] (loadingStatus) in
+        self.viewModel.loadingStatus.drive { [weak self] (loadingStatus) in
             switch loadingStatus {
             case .loaded:
                 self?.handleLoadedStatus()
@@ -118,7 +118,6 @@ public class LoadingManagerView: UIView {
     internal func handleErrorStatus(error: Error) {
         self.addAndFillSubviewAnimated(self.loadingErrorView)
         self.removeAllSubviews(except: self.loadingErrorView)
-        print(error)
     }
     
     /// Updates the view given that we've recieved a `.loaded` status

@@ -1,5 +1,5 @@
-{
-    "data": [{
+[
+    {
         "id": 1,
         "name": "Alvin Satterfield",
         "email": "cornellbartell@connellyleannon.biz",
@@ -1799,5 +1799,6 @@
         "position_applied": "Facilitator",
         "application_date": "2018-05-17",
         "status": "rejected"
-    }]
-}
+    }
+]
+

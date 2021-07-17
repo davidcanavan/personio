@@ -12,7 +12,7 @@ import RxCocoa
 public protocol LoadingManagerViewModel {
     
     // MARK: - Inputs
-    var loadingStatus: PublishRelay<LoadingStatus> { get }
+    var loadingStatus: Driver<LoadingStatus> { get }
     
     // MARK: - Outputs
     var reloadRequested: PublishRelay<Void> { get }
@@ -21,12 +21,12 @@ public protocol LoadingManagerViewModel {
 public class DefaultLoadingManagerViewModel: LoadingManagerViewModel {
     
     // MARK: - Inputs
-    public var loadingStatus: PublishRelay<LoadingStatus>
+    public var loadingStatus: Driver<LoadingStatus>
     
     // MARK: - Outputs
     public var reloadRequested: PublishRelay<Void> = PublishRelay()
     
-    public init(loadingStatus: PublishRelay<LoadingStatus>) {
+    public init(loadingStatus: Driver<LoadingStatus>) {
         self.loadingStatus = loadingStatus
     }
 }

@@ -27,10 +27,11 @@ public class MockPersonioRemoteService: PersonioRemoteService {
     
     /// Returns the list of candidates from the candidate endpoint
     /// - Returns: The candidate list
-    public func getCandidateList() -> Observable<[Candidate]> {
+    public func getCandidateList(page: Int) -> Observable<PagedResponse<Candidate>> {
         
         // Get the mock response
-        let mockResponse = self.mockServerResponses[self.currentMockServerResponsePosition]
+        let maxIndex = min(self.currentMockServerResponsePosition, self.mockServerResponses.count - 1)
+        let mockResponse = self.mockServerResponses[maxIndex]
         self.currentMockServerResponsePosition += 1
         
         // If it's an error we need to create a new observable since errors terminate immediately
@@ -48,12 +49,22 @@ public class MockPersonioRemoteService: PersonioRemoteService {
         }
         // Otherwise load the object from json
         else if let jsonURL = mockResponse.jsonURL {
-            let listResponse: GenericListResponse<Candidate> = self.loadObjectFromJSON(from: jsonURL)
+            let candidates: [Candidate] = self.loadArrayFromJSON(at: jsonURL)
+            let pageSize = 20
+            let pageCount = candidates.count == 0 ? 0 : (candidates.count - 1) / pageSize + 1
+            let pagedResponse = PagedResponse<Candidate>(
+                page: page,
+                items:
+                    Array(candidates[
+                            page*pageSize..<min((page + 1)*pageSize, candidates.count)
+                    ]
+                ),
+                hasMore: page >= pageCount)
             
             if mockResponse.delay == 0 {
-                return Observable.just(listResponse.data)
+                return Observable.just(pagedResponse)
             }
-            return Observable.just(listResponse.data)
+            return Observable.just(pagedResponse)
                 .delay(.seconds(mockResponse.delay), scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
         }
         
@@ -61,10 +72,15 @@ public class MockPersonioRemoteService: PersonioRemoteService {
         fatalError("No mock error or json provided")
     }
     
-    internal func loadObjectFromJSON<T: Decodable>(from url: URL) -> T {
+    internal func loadObjectFromJSON<T: Decodable>(at url: URL) -> T {
         let data = try! Data(contentsOf: url)
         let decodedObject = try! JSONDecoder().decode(T.self, from: data)
         return decodedObject
     }
     
+    internal func loadArrayFromJSON<T: Decodable>(at url: URL) -> [T] {
+        let data = try! Data(contentsOf: url)
+        let decodedObject = try! JSONDecoder().decode([T].self, from: data)
+        return decodedObject
+    }
 }

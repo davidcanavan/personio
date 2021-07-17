@@ -12,6 +12,8 @@
 		2B4D95C726923C5A00DBC519 /* PersonioServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4D95C626923C5A00DBC519 /* PersonioServiceFactory.swift */; };
 		2B68FC91268EEF9B00B3F7F5 /* GeneralCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B68FC90268EEF9B00B3F7F5 /* GeneralCell.swift */; };
 		2B718345268F0A1400AEBBF6 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B718344268F0A1400AEBBF6 /* UIView+.swift */; };
+		2B969A5326A193D6005EEF5E /* SafeRelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B969A5226A193D6005EEF5E /* SafeRelay.swift */; };
+		2B969A5926A19872005EEF5E /* Observable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B969A5826A19872005EEF5E /* Observable+.swift */; };
 		2BB04CBC268DEF6500C82A4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB04CBB268DEF6500C82A4F /* AppDelegate.swift */; };
 		2BB04CBE268DEF6500C82A4F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB04CBD268DEF6500C82A4F /* SceneDelegate.swift */; };
 		2BB04CC0268DEF6500C82A4F /* CandidateListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB04CBF268DEF6500C82A4F /* CandidateListViewController.swift */; };
@@ -28,7 +30,7 @@
 		2BB04D0A268DFD1400C82A4F /* RxBlocking.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB04D03268DFD1400C82A4F /* RxBlocking.xcframework */; };
 		2BB04D0B268DFD1400C82A4F /* RxBlocking.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB04D03268DFD1400C82A4F /* RxBlocking.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2BB04D16268E0FAD00C82A4F /* Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB04D15268E0FAD00C82A4F /* Candidate.swift */; };
-		2BB04D1C268E12A900C82A4F /* GenericListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB04D1B268E12A900C82A4F /* GenericListResponse.swift */; };
+		2BB04D1C268E12A900C82A4F /* PagedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB04D1B268E12A900C82A4F /* PagedResponse.swift */; };
 		2BB04D29268E1A8400C82A4F /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB04D22268E1A8400C82A4F /* Alamofire.xcframework */; };
 		2BB04D2A268E1A8400C82A4F /* Alamofire.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2BB04D22268E1A8400C82A4F /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2BB04D35268E1FCA00C82A4F /* PersonioRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB04D34268E1FCA00C82A4F /* PersonioRemoteService.swift */; };
@@ -91,6 +93,8 @@
 		2B4D95C626923C5A00DBC519 /* PersonioServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonioServiceFactory.swift; sourceTree = "<group>"; };
 		2B68FC90268EEF9B00B3F7F5 /* GeneralCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCell.swift; sourceTree = "<group>"; };
 		2B718344268F0A1400AEBBF6 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		2B969A5226A193D6005EEF5E /* SafeRelay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeRelay.swift; sourceTree = "<group>"; };
+		2B969A5826A19872005EEF5E /* Observable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+.swift"; sourceTree = "<group>"; };
 		2BB04CB8268DEF6500C82A4F /* Personio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Personio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BB04CBB268DEF6500C82A4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BB04CBD268DEF6500C82A4F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,7 +113,7 @@
 		2BB04D02268DFD1400C82A4F /* RxRelay.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = RxRelay.xcframework; path = Carthage/Build/RxRelay.xcframework; sourceTree = "<group>"; };
 		2BB04D03268DFD1400C82A4F /* RxBlocking.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = RxBlocking.xcframework; path = Carthage/Build/RxBlocking.xcframework; sourceTree = "<group>"; };
 		2BB04D15268E0FAD00C82A4F /* Candidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Candidate.swift; sourceTree = "<group>"; };
-		2BB04D1B268E12A900C82A4F /* GenericListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericListResponse.swift; sourceTree = "<group>"; };
+		2BB04D1B268E12A900C82A4F /* PagedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedResponse.swift; sourceTree = "<group>"; };
 		2BB04D1F268E1A8400C82A4F /* Realm.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Realm.xcframework; path = Carthage/Build/Realm.xcframework; sourceTree = "<group>"; };
 		2BB04D20268E1A8400C82A4F /* RealmSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = RealmSwift.xcframework; path = Carthage/Build/RealmSwift.xcframework; sourceTree = "<group>"; };
 		2BB04D21268E1A8400C82A4F /* RxAlamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = RxAlamofire.xcframework; path = Carthage/Build/RxAlamofire.xcframework; sourceTree = "<group>"; };
@@ -184,6 +188,15 @@
 			path = "View layer";
 			sourceTree = "<group>";
 		};
+		2B969A5126A193CC005EEF5E /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				2B969A5226A193D6005EEF5E /* SafeRelay.swift */,
+				2B969A5826A19872005EEF5E /* Observable+.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		2BB04CAF268DEF6500C82A4F = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +221,7 @@
 		2BB04CBA268DEF6500C82A4F /* Personio */ = {
 			isa = PBXGroup;
 			children = (
+				2B969A5126A193CC005EEF5E /* Helper */,
 				2BB04D11268E0B0B00C82A4F /* Service layer */,
 				2BB04D14268E0B2500C82A4F /* Model layer */,
 				2B68FC8F268EEED300B3F7F5 /* View layer */,
@@ -287,7 +301,7 @@
 		2BB04D4E268E5FFE00C82A4F /* Server model */ = {
 			isa = PBXGroup;
 			children = (
-				2BB04D1B268E12A900C82A4F /* GenericListResponse.swift */,
+				2BB04D1B268E12A900C82A4F /* PagedResponse.swift */,
 				2BB04D4F268E601500C82A4F /* GenericServerErrorResponse.swift */,
 				2BB04D48268E5E3400C82A4F /* ServerErrorResponse.swift */,
 			);
@@ -501,7 +515,7 @@
 				2B4D95C726923C5A00DBC519 /* PersonioServiceFactory.swift in Sources */,
 				2BFE1F1A26933EAB009F3804 /* LoadingManagerViewModel.swift in Sources */,
 				2BB04D35268E1FCA00C82A4F /* PersonioRemoteService.swift in Sources */,
-				2BB04D1C268E12A900C82A4F /* GenericListResponse.swift in Sources */,
+				2BB04D1C268E12A900C82A4F /* PagedResponse.swift in Sources */,
 				2BFE1F3C2693B4A1009F3804 /* GeneralCellViewModel.swift in Sources */,
 				2BFE1F1E26935038009F3804 /* MockServerResponse.swift in Sources */,
 				2BFE1EEA26927A1C009F3804 /* LoadingView.swift in Sources */,
@@ -512,12 +526,14 @@
 				2BFE1F4426944A56009F3804 /* CandidateGeneralCellViewModel.swift in Sources */,
 				2BB04CC0268DEF6500C82A4F /* CandidateListViewController.swift in Sources */,
 				2BB04CBC268DEF6500C82A4F /* AppDelegate.swift in Sources */,
+				2B969A5926A19872005EEF5E /* Observable+.swift in Sources */,
 				2BFE1ED9269256FE009F3804 /* CandidateListViewModel.swift in Sources */,
 				2B4D95C32691E52D00DBC519 /* RemoteNetworkService.swift in Sources */,
 				2BB04CBE268DEF6500C82A4F /* SceneDelegate.swift in Sources */,
 				2B718345268F0A1400AEBBF6 /* UIView+.swift in Sources */,
 				2BFE1F352693A42F009F3804 /* CandidateDetailViewController.swift in Sources */,
 				2BB04D49268E5E3400C82A4F /* ServerErrorResponse.swift in Sources */,
+				2B969A5326A193D6005EEF5E /* SafeRelay.swift in Sources */,
 				2BB04D16268E0FAD00C82A4F /* Candidate.swift in Sources */,
 				2BFE1F2F2693A3F0009F3804 /* CandidateDetailViewModel.swift in Sources */,
 			);

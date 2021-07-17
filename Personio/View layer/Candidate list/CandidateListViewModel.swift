@@ -12,16 +12,22 @@ import RxCocoa
 
 public protocol CandidateListViewModel {
     
+    // MARK: - Inputs
+    
+    /// Loads data for the view
+    func viewDidLoad()
+    func didScrollNearEnd()
+    func didPullToRefresh()
+    
     // MARK: - Outputs
     
     /// Outputs the `LoadingStatus`
-    var loadingStatus: PublishRelay<LoadingStatus> { get }
+    var screenLoadingStatus: SafeRelay<LoadingStatus> { get }
+    var pageLoadingStatus: SafeRelay<LoadingStatus> { get }
+    var pullToRefreshLoadingStatus: SafeRelay<LoadingStatus> { get }
     
     // Outputs the list of candidate models
-    var candidateViewModels: PublishRelay<[GeneralCellViewModel]> { get }
-    
-    /// Loads the data for this view model
-    func loadData()
+    var candidateViewModels: SafeRelay<[CandidateGeneralCellViewModel]> { get }
     
     /// Opens the candidate detail at the given index
     /// - Parameter viewModel: The index of the candidate in the source array
@@ -31,42 +37,92 @@ public protocol CandidateListViewModel {
 
 public class DefaultCandidateListViewModel: CandidateListViewModel {
     
+    
     // MARK: - Internal vars
-    
     internal let personioRemoteService: PersonioRemoteService
-    
-    /// Dispose bag for Rx subsriptions
     internal let disposeBag = DisposeBag()
+    internal var currentPage: Int = 0
     
     // MARK: - Outputs
-    
-    private(set) public var loadingStatus: PublishRelay<LoadingStatus> = PublishRelay()
-    private(set) public var candidateViewModels: PublishRelay<[GeneralCellViewModel]> = PublishRelay()
+    private(set) public var screenLoadingStatus = SafeRelay<LoadingStatus>(value: .loading)
+    private(set) public var pageLoadingStatus = SafeRelay<LoadingStatus>(value: .loaded)
+    private(set) public var pullToRefreshLoadingStatus = SafeRelay<LoadingStatus>(value: .loaded)
+    private(set) public var candidateViewModels = SafeRelay<[CandidateGeneralCellViewModel]>(value: [])
     
     // MARK: - Initialisers
-    
     public init(personioRemoteService: PersonioRemoteService) {
         self.personioRemoteService = personioRemoteService
     }
     
-    public func loadData() {
-        self.loadingStatus.accept(.loading)
-        
-        self.personioRemoteService.getCandidateList()
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] (candidates) in
-                let candidateCellModels = candidates.map({ candidate -> GeneralCellViewModel in
-                    return CandidateGeneralCellViewModel(candidate: candidate)
-                })
-                self?.candidateViewModels.accept(candidateCellModels)
-            }, onError: { [weak self] error in
-                self?.loadingStatus.accept(.loadingError(error: error))
-            }, onCompleted: { [weak self] in
-                self?.loadingStatus.accept(.loaded)
-            })
-            .disposed(by: self.disposeBag)
+    // MARK: - CandidateListViewModel Inputs
+    public func viewDidLoad() {
+        print("View did load")
+        self.loadData(initial: true, loadingStatusStream: self.screenLoadingStatus)
     }
     
+    public func didScrollNearEnd() {
+        print("Did scroll near end")
+        self.loadData(initial: false, loadingStatusStream: self.pageLoadingStatus)
+    }
+    
+    public func didPullToRefresh() {
+        print("Did pull to refresh")
+        
+        let candidates = self.candidateViewModels.value.map({ $0.candidate })
+        let models = candidates.enumerated().map({ (index, value) -> CandidateGeneralCellViewModel in
+            return CandidateGeneralCellViewModel(index: index, candidate: value)
+        })
+        self.candidateViewModels.value = models
+        self.pullToRefreshLoadingStatus.value = .loaded
+        
+//        self.loadData(initial: true, loadingStatusStream: self.pullToRefreshLoadingStatus)
+    }
+    
+    // MARK: - Business logic
+    // TODO: Check that this loading stream will unbind once the loading is completed
+    internal func loadData(initial: Bool, loadingStatusStream: SafeRelay<LoadingStatus>) {
+        // Reset the current page if we're going from scratch
+        self.currentPage = initial ? 0 : self.currentPage
+        
+        // Network request stream
+        let candidateListStream = self.personioRemoteService.getCandidateList(page: currentPage).share()
+        
+        // Loading status stream
+        candidateListStream
+            .getLoadingStatusStream()
+            .do(onNext: { [weak self] loadingStatus in
+                print(loadingStatus)
+                if loadingStatus == .loaded {
+                    self?.currentPage += 1
+                }
+            })
+            .bind(to: loadingStatusStream).disposed(by: self.disposeBag)
+        
+        // Candidate view models stream, add the new page of data
+        candidateListStream
+            .materialize()
+            .filter({ $0.error == nil }) // Filter out errors
+            .dematerialize()
+            .withLatestFrom(self.candidateViewModels, resultSelector: { (pagedResponse, viewModels) -> [CandidateGeneralCellViewModel] in
+                
+                var mergedViewModels: [CandidateGeneralCellViewModel] = []
+                if !initial {
+                    mergedViewModels.append(contentsOf: viewModels)
+                }
+                let count = mergedViewModels.count
+                let newViewModels = pagedResponse.items.enumerated().map({ (index, candidate) -> CandidateGeneralCellViewModel in
+                    return CandidateGeneralCellViewModel(index: index + count, candidate: candidate)
+                })
+                mergedViewModels.append(contentsOf: newViewModels)
+                return mergedViewModels
+            })
+            .bind(to: self.candidateViewModels).disposed(by: self.disposeBag)
+        
+        // Subscribe
+        candidateListStream.subscribe().disposed(by: self.disposeBag)
+    }
+    
+    // MARK: - Navigation
     public func openCandidateDetail(for viewModel: GeneralCellViewModel, in container: UIViewController) {
         
         guard let viewModel = viewModel as? CandidateGeneralCellViewModel else {
