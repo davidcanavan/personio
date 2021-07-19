@@ -9,6 +9,7 @@ import Foundation
 
 /// Generic model enum that handles any component's loading state
 public enum LoadingStatus: Equatable {
+    case pending
     case loading
     case loaded
     case loadingError(error: Error)

@@ -8,7 +8,7 @@
 import Foundation
 
 /// Server model object `Candidate`
-public class Candidate: Codable {
+public struct Candidate: Codable {
     
     public var id: Int
     public var name: String
@@ -30,22 +30,39 @@ public class Candidate: Codable {
         case status
     }
     
+    public init(id: Int, name: String, email: String, birthDate: String, yearsOfExperience: Int, positionApplied: String, applicationDate: String, status: String) {
+        self.id = id
+        self.name = name
+        self.email = email
+        self.birthDate = birthDate
+        self.yearsOfExperience = yearsOfExperience
+        self.positionApplied = positionApplied
+        self.applicationDate = applicationDate
+        self.status = status
+    }
 }
 
-//extension Candidate: Hashable {
-//    
-//    public static func == (lhs: Candidate, rhs: Candidate) -> Bool {
-//        return lhs.id == rhs.id &&
-//            lhs.name == rhs.name &&
-//            lhs.email == rhs.email &&
-//            lhs.birthDate == rhs.birthDate &&
-//            lhs.yearsOfExperience == rhs.yearsOfExperience &&
-//            lhs.positionApplied == rhs.positionApplied &&
-//            lhs.applicationDate == rhs.applicationDate &&
-//            lhs.status == rhs.status
-//    }
-//    
-//    public func hash(into hasher: inout Hasher) {
-//        hasher.combine(id)
-//    }
-//}
+extension Candidate: Hashable {
+    
+    public static func == (lhs: Candidate, rhs: Candidate) -> Bool {
+        return lhs.id == rhs.id &&
+            lhs.name == rhs.name &&
+            lhs.email == rhs.email &&
+            lhs.birthDate == rhs.birthDate &&
+            lhs.yearsOfExperience == rhs.yearsOfExperience &&
+            lhs.positionApplied == rhs.positionApplied &&
+            lhs.applicationDate == rhs.applicationDate &&
+            lhs.status == rhs.status
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(name)
+        hasher.combine(email)
+        hasher.combine(birthDate)
+        hasher.combine(yearsOfExperience)
+        hasher.combine(positionApplied)
+        hasher.combine(applicationDate)
+        hasher.combine(status)
+    }
+}

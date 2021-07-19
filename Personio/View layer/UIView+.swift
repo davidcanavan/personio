@@ -32,16 +32,17 @@ public extension UIView {
     }
     
     /// Centers the given view in it's superview
-    func centerInSuperView() {
+    func centerInSuperView(multiplier: CGFloat = 0.8) {
         
         guard let superview = self.superview else {
             return
         }
         
-        NSLayoutConstraint.activate([
-            self.centerXAnchor.constraint(equalTo: superview.centerXAnchor),
-            self.centerYAnchor.constraint(equalTo: superview.centerYAnchor)
-        ])
+        let centerx = self.centerXAnchor.constraint(equalTo: superview.centerXAnchor)
+        let centery = self.centerYAnchor.constraint(equalTo: superview.centerYAnchor)
+        centery.priority = .required
+        
+        NSLayoutConstraint.activate([centerx, centery])
     }
     
 }

@@ -82,6 +82,8 @@ public class LoadingManagerView: UIView {
                 self?.handleLoadingStatus()
             case .loadingError(let error):
                 self?.handleErrorStatus(error: error)
+            case .pending:
+                break
             }
         }.disposed(by: self.disposeBag)
         

@@ -8,15 +8,28 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxRelay
+
+/// Tableview section
+fileprivate struct Section {
+    var header: String
+    var items: [CandidateGeneralCellViewModel]
+}
+
+extension Section: AnimatableSectionModelType {
+    
+    var identity: String {
+        return self.header
+    }
+
+    init(original: Section, items: [CandidateGeneralCellViewModel]) {
+        self = original
+        self.items = items
+    }
+    
+}
 
 public class CandidateListViewController: UIViewController {
-    
-    // MARK: - Helpers
-    public enum Section {
-        case main
-    }
-    typealias DataSource = UITableViewDiffableDataSource<Section, CandidateGeneralCellViewModel>
-    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, CandidateGeneralCellViewModel>
     
     // MARK: - Instance vars
     
@@ -26,7 +39,7 @@ public class CandidateListViewController: UIViewController {
     /// Dispose bag for Rx subsriptions
     internal let disposeBag = DisposeBag()
     
-    internal var diffableDataSource: DataSource?
+//    internal var diffableDataSource: DataSource?
     
     // MARK: - User interface
     
@@ -53,10 +66,28 @@ public class CandidateListViewController: UIViewController {
             .map({ $0 == .loading }) // It's only refreshing while loading
             .drive(refreshControl.rx.isRefreshing)
             .disposed(by: self.disposeBag)
+        let toggle = UISwitch()
         return refreshControl
     }()
     
-//    lazy var loadingFooterView:
+    lazy var tableHeaderView: UIView = {
+        let headerView = UIView()
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+//        let titleLabel = UILabel()
+//        titleLabel.text = "Title"
+        let subtitleLabel = UILabel()
+        subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        subtitleLabel.text = "I am your leader and here's some really long text that should just expand like a boss"
+        subtitleLabel.numberOfLines = 0
+        subtitleLabel.setContentCompressionResistancePriority(.required, for: .vertical)
+//        let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
+//        stackView.translatesAutoresizingMaskIntoConstraints = false
+//        stackView.axis = .vertical
+        headerView.addSubview(subtitleLabel)
+        subtitleLabel.fillToSuperview(margins: true)
+        headerView.backgroundColor = .lightGray
+        return headerView
+    }()
     
     /// Tableview for the main interface
     lazy var tableView: UITableView = {
@@ -67,18 +98,35 @@ public class CandidateListViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 60
         
+        // Add the footer view
         tableView.tableFooterView = UIView()
         tableView.refreshControl = self.refreshControl
         
         tableView.delegate = self
-        tableView.prefetchDataSource = self
+        
+        self.bindTableView(tableView)
+        
+        return tableView
+    }()
+    
+    internal func bindTableView(_ tableView: UITableView) {
+        tableView.rx.contentOffset.asDriver()
+            .withLatestFrom(self.viewModel.pageLoadingStatus.driver)
+            .skip(1)
+            .filter({ loadingStatus -> Bool in
+                return loadingStatus != .loading && tableView.isNearBottomEdge()
+            })
+            .map({ _ in () })
+            .drive(onNext: { [weak self] () in
+                self?.viewModel.didScrollNearEnd()
+            }).disposed(by: self.disposeBag)
         
         // Handle page loading
         self.viewModel.pageLoadingStatus.driver
             .skip(1) // Skip the default value so we don't get a cycle
             .drive(onNext: { [weak self] (loadingStatus) in
                 switch loadingStatus {
-                case .loaded, .loadingError:
+                case .loaded, .loadingError, .pending:
                     self?.tableView.tableFooterView = UIView()
                 case .loading:
                     let activityIndicator = UIActivityIndicatorView()
@@ -88,18 +136,18 @@ public class CandidateListViewController: UIViewController {
             }).disposed(by: self.disposeBag)
         
         // Handle main data
+        let dataSource = RxTableViewSectionedAnimatedDataSource<Section>(configureCell: { (dataSource, tableView, indexPath, viewModel) -> UITableViewCell in
+            let cell = GeneralCell.deque(from: tableView, for: indexPath)
+            cell.viewModel = viewModel
+            return cell
+        })
+
         self.viewModel.candidateViewModels.driver
             .skip(1) // Skip the default value so we don't get a cycle
-            .delay(.seconds(2))
-            .drive { [weak self] (candidateViewModels) in
-                var snapshot = Snapshot()
-                snapshot.appendSections([.main])
-                snapshot.appendItems(candidateViewModels, toSection: .main)
-                self?.diffableDataSource?.apply(snapshot, animatingDifferences: true)
-            }.disposed(by: disposeBag)
-        
-        return tableView
-    }()
+            .map({ [Section(header: "None", items: $0)] })
+            .drive(tableView.rx.items(dataSource: dataSource))
+            .disposed(by: self.disposeBag)
+    }
     
     lazy var contentStackView: UIStackView = {
         let contentStackView = UIStackView(
@@ -133,9 +181,6 @@ public class CandidateListViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Candidates"
         
-        // Create the table view data source
-        self.diffableDataSource = self.createTableViewDataSource(tableView: self.tableView)
-        
         // Handle the errors
         Driver<LoadingStatus>.merge([
             self.viewModel.pageLoadingStatus.driver,
@@ -150,22 +195,42 @@ public class CandidateListViewController: UIViewController {
         self.viewModel.viewDidLoad()
     }
     
+    public override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.updateTableViewHeaderHeight()
+    }
+    
+    func updateTableViewHeaderHeight() {
+            
+        if let tableHeaderView = self.tableView.tableHeaderView {
+
+            let newHeight = tableHeaderView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+            var headerViewFrame = tableHeaderView.frame
+            
+            if headerViewFrame.size.height != newHeight {
+                headerViewFrame.size.height = 200
+                tableHeaderView.frame = headerViewFrame
+                self.tableView.tableHeaderView = tableHeaderView
+            }
+        }
+    }
+    
     internal func show(errorMessage message: String) {
         let controller = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         controller.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(controller, animated: true, completion: nil)
     }
     
-    internal func createTableViewDataSource(tableView: UITableView) -> DataSource {
-        let dataSource = DataSource(tableView: tableView) { (tableView, indexPath, cellViewModel) -> UITableViewCell? in
-            let cell = GeneralCell.deque(from: tableView, for: indexPath)
-            print("Dequeing: \(indexPath.row)")
-            cell.viewModel = cellViewModel
-            return cell
-        }
-//        dataSource.defaultRowAnimation = .fade
-        return dataSource
-    }
+//    internal func createTableViewDataSource(tableView: UITableView) -> DataSource {
+//        let dataSource = DataSource(tableView: tableView) { (tableView, indexPath, cellViewModel) -> UITableViewCell? in
+//            let cell = GeneralCell.deque(from: tableView, for: indexPath)
+//            print("Dequeing: \(indexPath.row)")
+//            cell.viewModel = cellViewModel
+//            return cell
+//        }
+////        dataSource.defaultRowAnimation = .fade
+//        return dataSource
+//    }
     
     /// Loads UI, layout and bindings
     public override func loadView() {
@@ -174,6 +239,10 @@ public class CandidateListViewController: UIViewController {
 
         self.view.addSubview(self.loadingManagerView)
         self.loadingManagerView.fillToSuperview(margins: true)
+        
+        // Add the header view
+        self.tableView.tableHeaderView = self.tableHeaderView
+        
     }
     
 }
@@ -184,25 +253,13 @@ extension CandidateListViewController: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        // Null check, but can never be null if this method can be called
-        guard let viewModel = self.diffableDataSource?.itemIdentifier(for: indexPath) else {
+        guard let cell = tableView.dataSource?.tableView(tableView, cellForRowAt: indexPath) as? GeneralCell else {
             return
         }
         
         // Open the route
-        self.viewModel.openCandidateDetail(for: viewModel, in: self)
+        self.viewModel.openCandidateDetail(for: cell.viewModel, in: self)
     }
 }
 
-extension CandidateListViewController: UITableViewDataSourcePrefetching {
-    
-    public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        
-//        print("Prefetch: \(indexPaths.reduce("", { "\($0), \($1.row)" }))")
-        
-//        if indexPaths.last!.row >= self.candidateViewModels!.count {
-//            self.viewModel.didScrollNearEnd()
-//        }
-    }
-    
-}
+

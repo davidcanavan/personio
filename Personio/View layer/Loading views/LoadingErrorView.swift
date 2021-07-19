@@ -60,6 +60,6 @@ public class LoadingErrorView: UIView {
     /// Handles UI, layout and bindings
     public func loadView() {
         self.addSubview(self.contentStackView)
-        self.contentStackView.centerInSuperView()
+        self.contentStackView.centerInSuperView(multiplier: 10)
     }
 }

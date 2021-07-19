@@ -45,8 +45,8 @@ public class DefaultCandidateListViewModel: CandidateListViewModel {
     
     // MARK: - Outputs
     private(set) public var screenLoadingStatus = SafeRelay<LoadingStatus>(value: .loading)
-    private(set) public var pageLoadingStatus = SafeRelay<LoadingStatus>(value: .loaded)
-    private(set) public var pullToRefreshLoadingStatus = SafeRelay<LoadingStatus>(value: .loaded)
+    private(set) public var pageLoadingStatus = SafeRelay<LoadingStatus>(value: .pending)
+    private(set) public var pullToRefreshLoadingStatus = SafeRelay<LoadingStatus>(value: .pending)
     private(set) public var candidateViewModels = SafeRelay<[CandidateGeneralCellViewModel]>(value: [])
     
     // MARK: - Initialisers
@@ -67,15 +67,7 @@ public class DefaultCandidateListViewModel: CandidateListViewModel {
     
     public func didPullToRefresh() {
         print("Did pull to refresh")
-        
-        let candidates = self.candidateViewModels.value.map({ $0.candidate })
-        let models = candidates.enumerated().map({ (index, value) -> CandidateGeneralCellViewModel in
-            return CandidateGeneralCellViewModel(index: index, candidate: value)
-        })
-        self.candidateViewModels.value = models
-        self.pullToRefreshLoadingStatus.value = .loaded
-        
-//        self.loadData(initial: true, loadingStatusStream: self.pullToRefreshLoadingStatus)
+        self.loadData(initial: true, loadingStatusStream: self.pullToRefreshLoadingStatus)
     }
     
     // MARK: - Business logic

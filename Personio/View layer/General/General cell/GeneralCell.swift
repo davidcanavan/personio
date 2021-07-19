@@ -26,16 +26,20 @@ public class GeneralCell: UITableViewCell {
     /// Larger label for title text
     public lazy var titleLabel: UILabel = {
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 20)
         label.text = "title"
+        label.setContentHuggingPriority(.required, for: .vertical)
         return label
     }()
     
     /// Smaller label for subtitle text
     public lazy var subtitleLabel: UILabel = {
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 16)
         label.text = "subtitle"
+        label.numberOfLines = 0
         return label
     }()
     

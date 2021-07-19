@@ -25,13 +25,13 @@ public enum PersonioServiceFactory {
         
         // Create some mocks for testing
         let mockResponses = [
+//            MockServerResponse(
+//                delay: 1,
+//                error: MockError.mock,
+//                jsonURL: nil
+//            ),
             MockServerResponse(
-                delay: 1,
-                error: MockError.mock,
-                jsonURL: nil
-            ),
-            MockServerResponse(
-                delay: 1,
+                delay: 0,
                 error: nil,
                 jsonURL: URL(fileURLWithPath: Bundle.main.path(forResource: "candidates", ofType: "json")!)
             )
